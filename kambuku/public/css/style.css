@@ -1,0 +1,195 @@
+
+
+/******************* 10.Widget ***************/
+.widget-s-1 {
+  border-radius: 6px;
+}
+.mini-stat {
+  background: #fff;
+  padding: 20px;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+.mini-stat-icon {
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  line-height: 60px;
+  text-align: center;
+  font-size: 30px;
+  -webkit-border-radius: 100%;
+  -moz-border-radius: 100%;
+  border-radius: 100%;
+  float: left;
+  margin-right: 10px;
+  color: #fff;
+}
+.mini-stat-info {
+  padding-top: 2px;
+}
+.mini-stat-info span {
+  display: block;
+  font-size: 24px;
+  font-weight: 600;
+  color: #555;
+}
+.mini-stat-info span.name {
+  display: block;
+  font-size: 18px;
+  font-weight: 600;
+  color: #777;
+  margin-top: 5px;
+}
+.inbox-widget .inbox-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #f1f1f1;
+  overflow: hidden;
+  position: relative;
+}
+.inbox-widget .inbox-item .inbox-item-img {
+  float: left;
+  width: 40px;
+  display: block;
+  margin-right: 15px;
+}
+.inbox-widget .inbox-item img {
+  width: 40px;
+}
+.inbox-widget .inbox-item .inbox-item-author {
+  color: #333;
+  display: block;
+  margin: 0;
+}
+.inbox-widget .inbox-item .inbox-item-text {
+  color: #a0a0a0;
+  display: block;
+  margin: 0;
+  font-size: 12px;
+}
+.inbox-widget .inbox-item .inbox-item-date {
+  position: absolute;
+  top: 2px;
+  right: 7px;
+  color: #a9a9a9;
+  font-size: 11px;
+}
+/* Chat / Todo */
+.conversation-list {
+  list-style: none;
+  padding: 0px 20px;
+  max-height: 330px;
+}
+.conversation-list li {
+  margin-bottom: 24px;
+}
+.conversation-list .chat-avatar {
+  width: 40px;
+  display: inline-block;
+  text-align: center;
+  float: left;
+}
+.conversation-list .chat-avatar img {
+  width: 100%;
+  border-radius: 100%;
+}
+.conversation-list .chat-avatar i {
+  font-size: 12px;
+  font-style: normal;
+}
+.conversation-list .ctext-wrap i {
+  display: block;
+  font-style: normal;
+  font-weight: bold;
+  position: relative;
+  font-size: 12px;
+  color: #1a2942;
+}
+.conversation-list .conversation-text {
+  display: inline-block;
+  font-size: 12px;
+  float: left;
+  margin-left: 12px;
+  width: 70%;
+}
+.conversation-list .ctext-wrap {
+  padding: 10px;
+  background: #F5F5F5;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  position: relative;
+  display: inline-block;
+}
+.conversation-list .ctext-wrap p {
+  margin: 0px;
+  padding-top: 3px;
+}
+.conversation-list .ctext-wrap:after {
+  right: 100%;
+  top: 20%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0;
+  position: absolute;
+  pointer-events: none;
+  border-color: rgba(213,242,239,0);
+  border-right-color: #F5F5F5;
+  border-width: 5px;
+  margin-top: -5px;
+}
+.conversation-list .odd .chat-avatar {
+  float: right !important;
+}
+.conversation-list .odd .conversation-text {
+  width: 70% !important;
+  margin-right: 12px;
+  text-align: right;
+  float: right !important;
+}
+.conversation-list .odd .ctext-wrap {
+  background: #e8e9ec !important;
+}
+.conversation-list .odd .ctext-wrap i {
+  color: #acacac;
+}
+.conversation-list .odd .ctext-wrap:after {
+  left: 100% !important;
+  top: 20% !important;
+  border-color: rgba(238,238,242,0)!important;
+  border-left-color: #e8e9ec !important;
+}
+.chat-send {
+  padding-left: 0px;
+  padding-right: 30px;
+}
+.chat-send button {
+  width: 100%;
+}
+.chat-inputbar {
+  padding-left: 30px;
+}
+/*ToDo List*/
+#todo-message {
+  font-size: 16px;
+}
+.todoapp {
+  padding: 10px 30px 20px 30px !important;
+}
+.todo-list li{
+  border:0px;
+  margin:0px;
+  border-radius:0px;
+  border-bottom:1px solid #eee;
+  padding-left: 0px !important;
+  padding-right: 0px !important;
+}
+.todo-list li:last-of-type {
+  border-bottom: none;
+}
+.todo-send {
+  padding-left: 0px;
+}
+
