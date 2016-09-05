@@ -70,7 +70,9 @@
                                             </td>
                                             <td>
                                                 <i class="fa fa-pencil-square fa-lg" style="cursor: pointer; color: lightskyblue"></i>&nbsp;
-                                                <i class="fa fa-trash fa-lg" style="cursor: pointer; color: red"></i>&nbsp;
+                                                <a href="{{ route('admin.deleteSlide', $slide->id) }}">
+                                                    <i class="fa fa-trash fa-lg" style="cursor: pointer; color: red"></i>&nbsp;
+                                                </a>
                                             </td>
                                         </tr>
                                     @endforeach
