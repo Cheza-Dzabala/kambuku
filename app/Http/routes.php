@@ -408,6 +408,12 @@ Route::group(['middleware' => ['web']], function () {
             ]
         );
 
+        ROute::get('/slider/delete/{id}',
+            [
+                'as' => 'admin.deleteSlide',
+                'uses' => 'Admin\HomeSliderController@delete'
+            ]
+        );
 
         Route::get('/adverts/dashboard',
              [

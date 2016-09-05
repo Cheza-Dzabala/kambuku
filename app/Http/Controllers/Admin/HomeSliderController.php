@@ -76,6 +76,16 @@ class HomeSliderController extends Controller
         return ('done');
     }
 
+
+
+    public function delete($id)
+    {
+        $slider = homeSliders::whereId($id);
+
+        $slider->delete();
+        return redirect()->route('admin.homesliderconfig');
+    }
+
     private function compile($img, $filename, $client, $sliderId)
     {
         $img->resize(500, 500);
