@@ -357,7 +357,7 @@ class ClassifiedsController extends Controller
 
                     $listing->delete();
 
-                    Session::flash('listing_failed', 'Failed To List Your Classafied');
+                    Session::flash('listing_failed', 'Failed To List Your Classified');
                     return redirect()->back();
                 }
             }
