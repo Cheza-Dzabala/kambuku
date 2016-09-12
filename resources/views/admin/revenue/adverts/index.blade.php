@@ -74,10 +74,19 @@
                                                 </a>
                                                 <a>
                                                     @if( $ad->is_active == 1)
-                                                        disable
+                                                       <a href="{{ route('admin.advertDeactivate', $ad->id) }}">
+                                                           disable
+                                                       </a>
                                                     @else
-                                                        enable
+                                                        <a href="{{ route('admin.advertActivate', $ad->id) }}">
+                                                            enable
+                                                        </a>
                                                     @endif
+                                                </a>
+                                                <a>
+                                                    <a href="{{ route('admin.advertDelete', $ad->id) }}">
+                                                            Delete
+                                                    </a>
                                                 </a>
                                             </td>
                                         </tr>

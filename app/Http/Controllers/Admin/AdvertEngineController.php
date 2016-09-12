@@ -15,6 +15,7 @@ use App\Http\Controllers\Controller;
 use App\Config;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class AdvertEngineController extends Controller
@@ -24,6 +25,14 @@ class AdvertEngineController extends Controller
     public function index()
     {
         $ads = paidAdverts::get();
+
+
+
+        foreach ($ads as $key => $value)
+        {
+            $mainAd = pageAds::whereAdvert_id($value['id'])->first();
+            array_add($ads[$key], 'is_active', $mainAd['is_active']);
+        }
 
         return view('admin.revenue.adverts.index', compact('ads'));
     }
@@ -138,7 +147,8 @@ class AdvertEngineController extends Controller
 
     public function deactivate($id)
     {
-        $ad = pageAds::whereId($id)->first();
+
+        $ad = pageAds::whereAdvert_id($id)->first();
 
         $ad->is_active = '0';
 
@@ -149,11 +159,25 @@ class AdvertEngineController extends Controller
 
     public function activate($id)
     {
-        $ad = pageAds::whereId($id)->first();
+        $ad = pageAds::whereAdvert_id($id)->first();
 
         $ad->is_active = '1';
 
         $ad->save();
+
+        return redirect()->route('admin.adverts_config');
+    }
+
+    public function deleteAd($id)
+    {
+        $ad = pageAds::whereAdvert_id($id)->first();
+
+        $adImage = paidAdverts::whereId($id)->first();
+
+        Storage::delete($adImage->image_path);
+
+        $adImage->delete();
+        $ad->delete();
 
         return redirect()->route('admin.adverts_config');
     }

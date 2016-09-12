@@ -451,6 +451,13 @@ Route::group(['middleware' => ['web']], function () {
             ]
         );
 
+        Route::get('advert/delete/{id}',
+            [
+                'as' => 'admin.advertDelete',
+                'uses' => 'Admin\AdvertEngineController@deleteAd'
+            ]
+        );
+
         Route::post('/adverts/new',
             [
                 'as' => 'admin.saveNewAd',
