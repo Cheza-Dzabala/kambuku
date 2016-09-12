@@ -436,6 +436,21 @@ Route::group(['middleware' => ['web']], function () {
             ]
         );
 
+        Route::get('advert/activate/{id}', 
+            [
+                'as' => 'admin.advertActivate',
+                'uses' => 'Admin\AdvertEngineController@activate'
+            ]
+        );
+
+
+        Route::get('advert/deactivate/{id}',
+            [
+                'as' => 'admin.advertDeactivate',
+                'uses' => 'Admin\AdvertEngineController@deactivate'
+            ]
+        );
+
         Route::post('/adverts/new',
             [
                 'as' => 'admin.saveNewAd',

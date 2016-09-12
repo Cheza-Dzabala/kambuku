@@ -73,7 +73,11 @@
                                                     Edit
                                                 </a>
                                                 <a>
-                                                    Disable
+                                                    @if( $ad->is_active == 1)
+                                                        disable
+                                                    @else
+                                                        enable
+                                                    @endif
                                                 </a>
                                             </td>
                                         </tr>

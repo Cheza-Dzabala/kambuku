@@ -136,5 +136,27 @@ class AdvertEngineController extends Controller
         return view('admin.revenue.adverts.edit', compact('adPages', 'adTypes', 'categories', 'ad'));
     }
 
+    public function deactivate($id)
+    {
+        $ad = pageAds::whereId($id)->first();
+
+        $ad->is_active = '0';
+
+        $ad->save();
+
+        return redirect()->route('admin.adverts_config');
+    }
+
+    public function activate($id)
+    {
+        $ad = pageAds::whereId($id)->first();
+
+        $ad->is_active = '1';
+
+        $ad->save();
+
+        return redirect()->route('admin.adverts_config');
+    }
+
 
 }
