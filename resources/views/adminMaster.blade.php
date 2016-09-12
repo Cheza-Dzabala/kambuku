@@ -14,22 +14,22 @@
     <link href="https://kambuku.com/public/admin/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Icons -->
-    <link href="https://kambuku.com/public/admin/assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
-    <link href="https://kambuku.com/public/admin/assets/ionicon/css/ionicons.min.css" rel="stylesheet" />
-    <link href="https://kambuku.com/public/admin/css/material-design-iconic-font.min.css" rel="stylesheet">
+    <link href="{{ asset('admin/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/admin/assets/ionicon/css/ionicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/admin/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
 
     <!-- animate css -->
-    <link href="https://kambuku.com/public/admin/css/animate.css" rel="stylesheet" />
+    <link href="{{ asset('/admin/css/animate.css') }}" rel="stylesheet" />
 
     <!-- Waves-effect -->
-    <link href="https://kambuku.com/public/admin/css/waves-effect.css" rel="stylesheet">
+    <link href="{{ asset('/admin/css/waves-effect.css') }}" rel="stylesheet">
 
     <!-- sweet alerts -->
-    <link href="https://kambuku.com/public/admin/assets/sweet-alert/sweet-alert.min.css" rel="stylesheet">
+    <link href="{{ asset('/admin/assets/sweet-alert/sweet-alert.min.css') }}" rel="stylesheet">
 
     <!-- Custom Files -->
-    <link href="https://kambuku.com/public/admin/css/helper.css" rel="stylesheet" type="text/css" />
-    <link href="https://kambuku.com/public/admin/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/admin/css/helper.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/admin/css/style.css') }}" rel="stylesheet" type="text/css" />
     @yield('css')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -88,41 +88,41 @@
 </script>
 
 <!-- jQuery  -->
-<script src="https://kambuku.com/public/admin/js/jquery.min.js"></script>
-<script src="https://kambuku.com/public/admin/js/bootstrap.min.js"></script>
-<script src="https://kambuku.com/public/admin/js/waves.js"></script>
-<script src="https://kambuku.com/public/admin/js/wow.min.js"></script>
-<script src="https://kambuku.com/public/admin/js/jquery.nicescroll.js" type="text/javascript"></script>
-<script src="https://kambuku.com/public/admin/js/jquery.scrollTo.min.js"></script>
-<script src="https://kambuku.com/public/admin/assets/chat/moment-2.2.1.js"></script>
-<script src="https://kambuku.com/public/admin/assets/jquery-sparkline/jquery.sparkline.min.js"></script>
-<script src="https://kambuku.com/public/admin/assets/jquery-detectmobile/detect.js"></script>
-<script src="https://kambuku.com/public/admin/assets/fastclick/fastclick.js"></script>
-<script src="https://kambuku.com/public/admin/assets/jquery-slimscroll/jquery.slimscroll.js"></script>
-<script src="https://kambuku.com/public/admin/assets/jquery-blockui/jquery.blockUI.js"></script>
+<script src="{{ asset('/admin/js/jquery.min.js') }}"></script>
+<script src="{{ asset('/admin/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/admin/js/waves.js') }}"></script>
+<script src="{{ asset('/admin/js/wow.min.js') }}"></script>
+<script src="{{ asset('/admin/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/admin/js/jquery.scrollTo.min.js') }}"></script>
+<script src="{{ asset('/admin/assets/chat/moment-2.2.1.js') }}"></script>
+<script src="{{ asset('/admin/assets/jquery-sparkline/jquery.sparkline.min.js') }}"></script>
+<script src="{{ asset('/admin/assets/jquery-detectmobile/detect.js') }}"></script>
+<script src="{{ asset('/admin/assets/fastclick/fastclick.js') }}"></script>
+<script src="{{ asset('/admin/assets/jquery-slimscroll/jquery.slimscroll.js') }}"></script>
+<script src="{{ asset('/admin/assets/jquery-blockui/jquery.blockUI.js') }}"></script>
 
-<script src="https://kambuku.com/public/js/links.js"></script>
+<script src="{{ asset('/js/links.js') }}"></script>
 
 
 <!-- sweet alerts -->
-<script src="https://kambuku.com/public/admin/assets/sweet-alert/sweet-alert.min.js"></script>
-<script src="https://kambuku.com/public/admin/assets/sweet-alert/sweet-alert.init.js"></script>
+<script src="{{ asset('/admin/assets/sweet-alert/sweet-alert.min.js') }}"></script>
+<script src="{{ asset('/admin/assets/sweet-alert/sweet-alert.init.js') }}"></script>
 
 
 <!-- Counter-up -->
-<script src="https://kambuku.com/public/admin/assets/counterup/waypoints.min.js" type="text/javascript"></script>
-<script src="https://kambuku.com/public/admin/assets/counterup/jquery.counterup.min.js" type="text/javascript"></script>
+<script src="{{ asset('/admin/assets/counterup/waypoints.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('/admin/assets/counterup/jquery.counterup.min.js') }}" type="text/javascript"></script>
 
 <!-- CUSTOM JS -->
-<script src="https://kambuku.com/public/admin/js/jquery.app.js"></script>
+<script src="{{ asset('/admin/js/jquery.app.js') }}"></script>
 
-<script src="https://kambuku.com/public/admin/assets/timepicker/bootstrap-datepicker.js"></script>
+<script src="{{ asset('/assets/timepicker/bootstrap-datepicker.js') }}"></script>
 
 <!-- Chat -->
-<script src="https://kambuku.com/public/admin/js/jquery.chat.js"></script>
+<script src="{{ asset('/admin/js/jquery.chat.js') }}"></script>
 
 <!-- Todo -->
-<script src="https://kambuku.com/public/admin/js/jquery.todo.js"></script>
+<script src="{{ asset('/admin/js/jquery.todo.js') }}"></script>
 @yield('scripts')
 <script type="text/javascript">
     /* ==============================================

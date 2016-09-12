@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-sm-4 col-lg-6">
                 <div class="logo pull-left">
-                    <a href="{{ url('/') }}"><img src="{{ asset('public/images/home/logo.png') }}" alt="" width="80px" height="auto"/></a>
+                    <a href="{{ url('/') }}"><img src="{{ asset('/images/home/logo.png') }}" alt="" width="80px" height="auto"/></a>
                 </div>
 		<div style="margin-top:5%">
 			 <span id="siteseal"><script async type="text/javascript" src="https://seal.godaddy.com/getSeal?sealID=mYWZXbZXPiYLsectzsnHi4SLTFqshnXQuT7rl67XQvwUZxjM7bpSgKGL6brn"></script></span>
