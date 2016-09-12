@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+class AddIsActiveToPaidAds extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,10 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-
+        //
+        Schema::table('paid_adverts', function ($table){
+            $table->boolean('is_active')->default('1');
+        });
     }
 
     /**
@@ -22,6 +25,10 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
+        //
+        Schema::table('paid_adverts', function ($table){
+            $table->dropColumn('is_active');
+        });
 
     }
 }
