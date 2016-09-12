@@ -81,7 +81,6 @@ class HomeSliderController extends Controller
     public function delete($id)
     {
         $slider = homeSliders::whereId($id);
-
         $slider->delete();
         return redirect()->route('admin.homesliderconfig');
     }

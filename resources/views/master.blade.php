@@ -7,20 +7,20 @@
     <meta name="author" content="">
     <title>@yield('title')| Kambuku</title>
     <link href="https://kambuku.com/public/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://kambuku.com/public/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://kambuku.com/public/css/prettyPhoto.css" rel="stylesheet">
-    <link href="https://kambuku.com/public/css/price-range.css" rel="stylesheet">
-    <link href="https://kambuku.com/public/css/animate.css" rel="stylesheet">
-    <link href="https://kambuku.com/public/css/main.css" rel="stylesheet">
-    <link href="https://kambuku.com/public/css/responsive.css" rel="stylesheet">
+    <link href="{{ asset('/css/font-awesome.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/prettyPhoto.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/price-range.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/animate.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/main.css') }}" rel="stylesheet">
+    <link href="{{ asset('/css/responsive.css') }}" rel="stylesheet">
     <!--Custom Scripts Noptification Plugin-->
-    <link href="https://kambuku.com/public/js/timepicker/bootstrap-timepicker.min.css" rel="stylesheet" />
-    <link href="https://kambuku.com/public/js/timepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-    <link href="https://kambuku.com/public/js/notifications/notification.css" rel="stylesheet" />
+    <link href="{{ asset('/js/timepicker/bootstrap-timepicker.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/js/timepicker/bootstrap-datepicker.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/js/notifications/notification.css') }}" rel="stylesheet" />
 
     <!-- Custom Files -->
 
-    <link href="https://kambuku.com/public/css/style.css" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('/css/style.css') }}" rel="stylesheet" type="text/css" />
 
     <!--venobox lightbox-->
     <link rel="stylesheet" href="https://kambuku.com/public/js/magnific-popup/magnific-popup.css"/>
@@ -29,11 +29,11 @@
     <script src="https://kambuku.com/'public/js/respond.min.js"></script>
     <![endif]-->
     @yield('css')
-    <link rel="shortcut icon" href="https://kambuku.com/public/images/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://kambuku.com/public/images/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="https://kambuku.com/'public/images/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="https://kambuku.com/public/images/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="https://kambuku.com/public/images/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="{{ asset('images/ico/favicon.ico') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('/public/images/ico/apple-touch-icon-144-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('/images/ico/apple-touch-icon-114-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('/images/ico/apple-touch-icon-72-precomposed.png') }}">
+    <link rel="apple-touch-icon-precomposed" href="{{ asset('/images/ico/apple-touch-icon-57-precomposed.png') }}">
 
 </head><!--/head-->
 
@@ -50,28 +50,28 @@
                             <li class="dropdown" style="cursor: pointer;">
                                 @if(Config::get('app.locale')== 'en')
                                     <a class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="{{ asset('public/images/flags/gb.png') }}" class="position-left" alt="">
+                                        <img src="{{ asset('/images/flags/gb.png') }}" class="position-left" alt="">
                                         English
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a href="{{ route('language.set', 'mw') }}" class="chichewa" style="cursor: pointer;">
-                                                <img src="{{ asset('public/images/flags/mw.png') }}" alt="">
+                                                <img src="{{ asset('/images/flags/mw.png') }}" alt="">
                                                 Chichewa
                                             </a>
                                         </li>
                                     </ul>
                                     @else
                                     <a class="dropdown-toggle" data-toggle="dropdown">
-                                        <img src="{{ asset('public/images/flags/mw.png') }}" class="position-left" alt="">
+                                        <img src="{{ asset('/images/flags/mw.png') }}" class="position-left" alt="">
                                         Chichewa
                                         <span class="caret"></span>
                                     </a>
                                     <ul class="dropdown-menu">
                                         <li>
                                             <a href="{{ route('language.set', 'en') }}" class="chichewa" style="cursor: pointer;">
-                                                <img src="{{ asset('public/images/flags/gb.png') }}" alt="">
+                                                <img src="{{ asset('/images/flags/gb.png') }}" alt="">
                                                 English
                                             </a>
                                         </li>
@@ -109,31 +109,31 @@
 @yield('footer')
 
 
-<script src="https://kambuku.com/public/js/jquery.js"></script>
-<script src="https://kambuku.com/public/js/links.js"></script>
-<script src="https://kambuku.com/public/js/socket.io.js"></script>
-<script src="https://kambuku.com/public/js/test.js"></script>
-<script src="https://kambuku.com/public/js/bootstrap.min.js"></script>
-<script src="https://kambuku.com/public/js/jquery.scrollUp.min.js"></script>
-<script src="https://kambuku.com/public/js/price-range.js"></script>
-<script src="https://kambuku.com/public/js/jquery.prettyPhoto.js"></script>
-<script src="https://kambuku.com/public/js/main.js"></script>
-<script src="https://kambuku.com/public/js/timepicker/bootstrap-timepicker.min.js"></script>
-<script src="https://kambuku.com/public/js/timepicker/bootstrap-datepicker.js"></script>
-<script type="text/javascript" src="https://kambuku.com/public/js/gallery/isotope.js"></script>
-<script type="text/javascript" src="https://kambuku.com/public/js/magnific-popup/magnific-popup.js"></script>
+<script src="{{ asset('/js/jquery.js') }}"></script>
+<script src="{{ asset('/js/links.js') }}"></script>
+<script src="{{ asset('/js/socket.io.js') }}"></script>
+<script src="{{ asset('/js/test.js') }}"></script>
+<script src="{{ asset('/js/bootstrap.min.js') }}"></script>
+<script src="{{ asset('/js/jquery.scrollUp.min.js') }}"></script>
+<script src="{{ asset('/js/price-range.js') }}"></script>
+<script src="{{ asset('/js/jquery.prettyPhoto.js') }}"></script>
+<script src="{{ asset('/js/main.js') }}"></script>
+<script src="{{ asset('/js/timepicker/bootstrap-timepicker.min.js') }}"></script>
+<script src="{{ asset('/js/timepicker/bootstrap-datepicker.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/gallery/isotope.js') }}"></script>
+<script type="text/javascript" src="{{ asset('/js/magnific-popup/magnific-popup.js') }}"></script>
 <!-- NOTIFICATION -->
-<script src="https://kambuku.com/public/js/notifications/notify.js"></script>
-<script src="https://kambuku.com/public/js/notifications/notify-metro.js"></script>
-<script src="https://kambuku.com/public/js/notifications/notifications.js"></script>
-<script src="https://kambuku.com/public/js/global.js"></script>
+<script src="{{ asset('/js/notifications/notify.js') }}"></script>
+<script src="{{ asset('/js/notifications/notify-metro.js') }}"></script>
+<script src="{{ asset('/js/notifications/notifications.js') }}"></script>
+<script src="{{ asset('/js/global.js') }}"></script>
 
 
 <!-- Chat -->
 
 
 <!-- Other -->
-<script src="https://kambuku.com/public/js/jquery.nicescroll.js" type="text/javascript"></script>
+<script src="{{ asset('/js/jquery.nicescroll.js') }}" type="text/javascript"></script>
 <script>
     var socket = io(main_host+':3000');
    // var message_socket = io(main_host+'4000');

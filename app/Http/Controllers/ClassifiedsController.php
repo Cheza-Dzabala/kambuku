@@ -379,6 +379,8 @@ class ClassifiedsController extends Controller
         $img_path = Config::whereName('image_dir')->first();
 
         $img->resize(500, 500);
+        
+
         $dir = $img_path->value.$filename;
         $img->save($dir);
 
