@@ -13,7 +13,7 @@ class AppdashBoardController extends Controller
     //
     public function index()
     {
-        $listings = classifieds::orderBy('id', 'DESC')->whereIs_active('1')->take(10)->get()->toArray();
+        $listings = classifieds::orderBy('id', 'DESC')->whereIs_active('1')->take(20)->get()->toArray();
 
         return $listings;
 
