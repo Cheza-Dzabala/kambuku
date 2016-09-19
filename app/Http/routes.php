@@ -31,9 +31,40 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
+
     Route::get('home',
         [
             'uses' => 'App\AppdashBoardController@index'
+        ]
+    );
+
+    Route::get('listing/{id}',
+        [
+            'uses' => 'App\AppdashBoardController@userDetails'
+        ]
+    );
+
+    Route::get('categories',
+        [
+            'uses' => 'App\appCategoryController@index'
+        ]
+    );
+
+    Route::get('subcategory/{id}',
+        [
+            'uses' => 'App\appCategoryController@subCategories'
+        ]
+    );
+
+    Route::get('listings/category/{id}',
+        [
+            'uses' => 'App\appCategoryController@categoryListings'
+        ]
+    );
+
+    Route::get('listings/subcategory/{id}',
+        [
+            'uses' => 'App\appCategoryController@subcategoryListings'
         ]
     );
 
