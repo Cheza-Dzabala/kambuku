@@ -382,7 +382,7 @@ class ClassifiedsController extends Controller
         
 
         $dir = $img_path->value.$filename;
-        $img->save($dir);
+        $img->save($dir, 50);
 
         if ($marker == 0)
         {

@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\App;
 
 use App\User;
-use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Auth;
+use Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Input;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\Exceptions\TokenExpiredException;
+use Tymon\JWTAuth\Exceptions\TokenInvalidException;
 use Tymon\JWTAuth\Facades\JWTAuth;
 
 class AuthenticateController extends Controller
@@ -23,9 +27,11 @@ class AuthenticateController extends Controller
         $this->middleware('CORS');
     }
 
-    public function authenticate()
+    public function authenticate(Request $request)
     {
-        $credentials = Input::only('email', 'password');
+        $email =  Request::header('email');
+        $password =  Request::header('password');
+        $credentials = (['email' => $email, 'password' => $password]);
 
         //dd($credentials);
         try {
@@ -44,8 +50,28 @@ class AuthenticateController extends Controller
 
     public function index()
     {
-        // Retrieve all the users in the database and return them
-        $users = User::all();
-        return $users;
+        // Retrieve Authenticated USer the users in the database and return them
+        try {
+
+            if (! $user = JWTAuth::parseToken()->authenticate()) {
+                return response()->json(['user_not_found'], 404);
+            }
+
+        } catch (TokenExpiredException $e) {
+
+            return response()->json(['token_expired'], $e->getStatusCode());
+
+        } catch (TokenInvalidException $e) {
+
+            return response()->json(['token_invalid'], $e->getStatusCode());
+
+        } catch (JWTException $e) {
+
+            return response()->json(['token_absent'], $e->getStatusCode());
+
+        }
+
+        // the token is valid and we have found the user via the sub claim
+        return response()->json(compact('user'));
     }
 }
