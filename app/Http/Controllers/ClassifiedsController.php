@@ -341,7 +341,7 @@ class ClassifiedsController extends Controller
        // dd($watermark_dir);
         foreach ($files as $file) {
             if (!empty($file)) {
-                $rules = array('file' => 'required|mimes:jpeg,jpg,png|max:10000');
+                $rules = array('file' => 'required|mimes:jpeg,jpg,png');
                 $validator = validator(array('file' => $file), $rules);
                 if ($validator->passes()){
                     $img = Image::make($file);
