@@ -45,7 +45,7 @@ class AuthenticateController extends Controller
         }
 
         // if no errors are encountered we can return a JWT
-        return response()->json(compact('token'));
+        return response('successfully logged in', 200)->header('token', $token);
     }
 
     public function index()
@@ -71,7 +71,12 @@ class AuthenticateController extends Controller
 
         }
 
+        $newToken = JWTAuth::parseToken()->refresh();
+
+        //dd($newToken);
+
         // the token is valid and we have found the user via the sub claim
-        return response()->json(compact('user'));
+        return response(compact('user'))
+            ->header('token', $newToken);
     }
 }
