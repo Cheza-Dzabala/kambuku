@@ -347,7 +347,7 @@ class ClassifiedsController extends Controller
                     $img = Image::make($file);
                     $watermark = Image::make($watermark_dir);
                     $img->insert($watermark, 'bottom-right', 10,10);
-                    $filename = $user.time() . '.' .$file->getClientOriginalName();
+                    $filename = $user.time() . str_random(10). '.' .$file->getClientOriginalExtension();
                     $this->make_main_image($img, $filename, $classified_id, $marker);
                     $marker++;
                     $this->make_thumbnail($img, $filename, $classified_id);
