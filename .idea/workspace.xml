@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a1d0239f-d237-4a8a-818b-1dbd297b5936" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/App/AuthenticateController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/App/AuthenticateController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php" />
     </list>
     <ignored path="kambuku.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -44,21 +44,19 @@
       <file leaf-file-name="routes.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="555">
-              <caret line="70" column="89" selection-start-line="70" selection-start-column="89" selection-end-line="70" selection-end-column="89" />
+            <state relative-caret-position="240">
+              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthenticateController.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/App/AuthenticateController.php">
+      <file leaf-file-name="AppdashBoardController.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="398">
-              <caret line="54" column="0" selection-start-line="54" selection-start-column="0" selection-end-line="54" selection-end-column="0" />
-              <folding>
-                <element signature="e#44#57#0#PHP" expanded="true" />
-              </folding>
+            <state relative-caret-position="285">
+              <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -133,12 +131,12 @@
         <option value="$PROJECT_DIR$/app/paidAdverts.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/AdvertEngineController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/revenue/adverts/index.blade.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php" />
         <option value="$PROJECT_DIR$/app/Http/routes.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/App/appCategoryController.php" />
         <option value="$PROJECT_DIR$/vendor/tymon/jwt-auth/src/JWTAuth.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ClassifiedsController.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/App/AuthenticateController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php" />
       </list>
     </option>
   </component>
@@ -158,9 +156,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
+    <option name="x" value="-1" />
     <option name="y" value="30" />
-    <option name="width" value="1366" />
-    <option name="height" value="738" />
+    <option name="width" value="1368" />
+    <option name="height" value="739" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -209,6 +208,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scratches" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -350,7 +350,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -445,7 +444,8 @@
       <workItem from="1474455842423" duration="930000" />
       <workItem from="1474536348198" duration="5647000" />
       <workItem from="1474971573689" duration="310000" />
-      <workItem from="1475504056215" duration="2261000" />
+      <workItem from="1475504056215" duration="2886000" />
+      <workItem from="1476029612898" duration="650000" />
     </task>
     <task id="LOCAL-00001" summary="htAccess Edit">
       <created>1473068328806</created>
@@ -559,18 +559,25 @@
       <option name="project" value="LOCAL" />
       <updated>1474541771469</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Token Management">
+      <created>1475506339778</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1475506339778</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34095000" />
+    <option name="totallyTimeSpent" value="35370000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="30" width="1366" height="738" extended-state="6" />
+    <frame x="-1" y="30" width="1368" height="739" extended-state="6" />
     <editor active="false" />
     <layout>
       <window_info id="Gulp" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29502195" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.29502195" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32919255" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32988048" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -615,7 +622,8 @@
     <MESSAGE value="JWT" />
     <MESSAGE value="image sizw" />
     <MESSAGE value="image size" />
-    <option name="LAST_COMMIT_MESSAGE" value="image size" />
+    <MESSAGE value="Token Management" />
+    <option name="LAST_COMMIT_MESSAGE" value="Token Management" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -862,13 +870,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="65" selection-start-line="25" selection-start-column="65" selection-end-line="25" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/App/appCategoryController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="563">
@@ -894,7 +895,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="195">
           <caret line="20" column="21" selection-start-line="20" selection-start-column="21" selection-end-line="20" selection-end-column="21" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -945,7 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="443">
           <caret line="36" column="62" selection-start-line="36" selection-start-column="12" selection-end-line="36" selection-end-column="62" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -953,7 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="4890">
           <caret line="349" column="24" selection-start-line="349" selection-start-column="24" selection-end-line="349" selection-end-column="24" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -961,7 +959,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="315">
           <caret line="29" column="13" selection-start-line="29" selection-start-column="13" selection-end-line="29" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -973,14 +970,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="555">
-          <caret line="70" column="89" selection-start-line="70" selection-start-column="89" selection-end-line="70" selection-end-column="89" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/App/AuthenticateController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="398">
@@ -988,6 +977,22 @@
           <folding>
             <element signature="e#44#57#0#PHP" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/routes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/App/AppdashBoardController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="25" column="0" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
