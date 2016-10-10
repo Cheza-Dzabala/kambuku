@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a1d0239f-d237-4a8a-818b-1dbd297b5936" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/adminTicketController.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/clients.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/events.blade.php" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/resources/views/admin/tickets/index.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/routes.php" afterPath="$PROJECT_DIR$/app/Http/routes.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/partials/general/leftsidebar.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/partials/general/leftsidebar.blade.php" />
     </list>
     <ignored path="kambuku.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -631,7 +625,7 @@
       <workItem from="1476029612898" duration="1556000" />
       <workItem from="1476031178134" duration="1112000" />
       <workItem from="1476084248814" duration="55000" />
-      <workItem from="1476085917110" duration="14215000" />
+      <workItem from="1476085917110" duration="14249000" />
     </task>
     <task id="LOCAL-00001" summary="htAccess Edit">
       <created>1473068328806</created>
@@ -766,11 +760,18 @@
       <option name="project" value="LOCAL" />
       <updated>1476031206427</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="ticketing Module V.1">
+      <created>1476113772615</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1476113772615</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="51658000" />
+    <option name="totallyTimeSpent" value="51692000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1" y="30" width="1368" height="739" extended-state="6" />
@@ -825,7 +826,8 @@
     <MESSAGE value="Token Management" />
     <MESSAGE value="Image Paths" />
     <MESSAGE value="Images Resolution" />
-    <option name="LAST_COMMIT_MESSAGE" value="Images Resolution" />
+    <MESSAGE value="ticketing Module V.1" />
+    <option name="LAST_COMMIT_MESSAGE" value="ticketing Module V.1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
