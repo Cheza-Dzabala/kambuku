@@ -50,6 +50,7 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('admin.homesliderconfig') }}">Home Slider</a></li>
                         <li><a href="{{ route('admin.adverts_config') }}">Paid Adverts</a></li>
+                        <li><a href="{{ route('admin.tickets') }}">Tickets</a></li>
 
                     </ul>
                 </li>

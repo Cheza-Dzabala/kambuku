@@ -214,6 +214,46 @@ Route::group(['middleware' => ['web']], function () {
             ]
         );
 
+        /**
+         * Tickets
+         */
+
+        Route::get('/tickets',
+            [
+                'as' => 'admin.tickets',
+                'uses' => 'Admin\adminTicketController@index'
+            ]
+        );
+
+        Route::get('/client_tickets',
+            [
+               'as' => 'admin.tickets.clients',
+                'uses' => 'Admin\adminTicketController@clients'
+            ]
+        );
+        Route::post('/client_tickets',
+            [
+               'as' => 'admin.tickets.clients.save',
+                'uses' => 'Admin\adminTicketController@clientsSave'
+            ]
+        );
+
+        Route::get('/event_tickets/{id}',
+            [
+               'as' => 'admin.tickets.events',
+                'uses' => 'Admin\adminTicketController@events'
+            ]
+        );
+
+        Route::post('/event_tickets',
+            [
+               'as' => 'admin.tickets.events.save',
+                'uses' => 'Admin\adminTicketController@eventsSave'
+            ]
+        );
+
+
+
 
         /** Category & Sub Category Routes */
 
