@@ -18,6 +18,12 @@ class adminTicketController extends Controller
     public function index()
     {
         $clients = eventClients::get();
+        foreach ($clients as $client)
+        {
+            $count = events::whereClientid($client->id)->count();
+            $client = array_add($client, 'eventCount', $count);
+        }
+
         return view('admin.tickets.index', compact('clients'));
     }
 
@@ -51,7 +57,7 @@ class adminTicketController extends Controller
     public function events($id)
     {
         $client = eventClients::whereId($id)->first();
-        return view('admin.tickets.events', compact('client'));
+        return view('admin.tickets.newEvent', compact('client'));
     }
 
     public function eventsSave(Request $request)
@@ -77,6 +83,7 @@ class adminTicketController extends Controller
               'clientId' => $request->clientId,
               'eventName' => $request->eventName,
               'eventDate' => $request->eventDate,
+              'price' => $request->price,
               'venue' => $request->venue,
               'city' => $request->city,
               'time' => $request->time,
@@ -88,5 +95,27 @@ class adminTicketController extends Controller
         return redirect()->route('admin.tickets');
     }
 
+    public function eventsView($id)
+    {
+        $events = events::whereClientid($id)->get();
+        return view('admin.tickets.events', compact('events'));
+    }
+
+    public function eventsEdit($id)
+    {
+        $event = events::whereId($id)->first();
+        return view('admin.tickets.editEvent', compact('event'));
+    }
+
+    public function eventUpdate(Request $request)
+    {
+        $input = $request->all();
+        $event = events::whereId($request->id)->first();
+        $event->fill($input);
+        $event->save();
+
+
+        return redirect()->route('admin.tickets.events.view', $request->clientId);
+    }
 
 }

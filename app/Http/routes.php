@@ -245,10 +245,31 @@ Route::group(['middleware' => ['web']], function () {
             ]
         );
 
+        Route::get('/event_tickets/view/{id}',
+            [
+               'as' => 'admin.tickets.events.view',
+                'uses' => 'Admin\adminTicketController@eventsView'
+            ]
+        );
+
+        Route::get('/event_tickets/edit/{id}',
+            [
+               'as' => 'admin.tickets.events.edit',
+                'uses' => 'Admin\adminTicketController@eventsEdit'
+            ]
+        );
+
         Route::post('/event_tickets',
             [
                'as' => 'admin.tickets.events.save',
                 'uses' => 'Admin\adminTicketController@eventsSave'
+            ]
+        );
+
+        Route::post('/event_tickets/update',
+            [
+               'as' => 'admin.tickets.events.update',
+                'uses' => 'Admin\adminTicketController@eventUpdate'
             ]
         );
 

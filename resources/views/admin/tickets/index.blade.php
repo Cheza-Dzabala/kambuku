@@ -37,6 +37,7 @@
                                     <th>Name</th>
                                     <th>Client Contact Person</th>
                                     <th>Client Phone Number</th>
+                                    <th>Event Count</th>
                                     <th>Action</th>
                                 </tr>
                                 </thead>
@@ -46,9 +47,13 @@
                                             <td>{{ $client->name }}</td>
                                             <td>{{ $client->contactPerson }}</td>
                                             <td>{{ $client->contactNumber }}</td>
+                                            <td>{{ $client->eventCount }}</td>
                                             <td>
                                                 <a href="{{ route('admin.tickets.events', $client->id) }}">
                                                     Create Event
+                                                </a>
+                                                <a href="{{ route('admin.tickets.events.view', $client->id) }}">
+                                                    View Events
                                                 </a>
                                             </td>
                                         </tr>

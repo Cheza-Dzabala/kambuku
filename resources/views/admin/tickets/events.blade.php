@@ -4,80 +4,40 @@
 @endsection
 
 @section('content')
-
-
     <!-- ============================================================== -->
     <!-- Start right Content here -->
     <!-- ============================================================== -->
     <div class="row">
-
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <ul>
-                        <li class="dropdown" style="list-style: none">
-                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                                           <span class="panel-title"><h4>Create Event</h4>
-                                               </span>
+        @foreach($events as $event)
+            <div class="col-sm-6 col-lg-4">
+                <div class="panel">
+                    <div class="panel-body">
+                        <div class="media-main">
+                            <a class="pull-left" href="#">
+                                <img class="thumb-lg img-circle" src="/{{ $event->artwork }}" alt="">
                             </a>
-                        </li>
-                    </ul>
-
-                </div>
-
-                <div class="panel-body">
-                    <div class="row">
-                        <div class="col-md-2"></div>
-                        <div class="col-md-8">
-                            {!! Form::open(['method' => 'post', 'files' => 'true', 'route' => 'admin.tickets.events.save']) !!}
-                                {{ csrf_field() }}
-                                <div class="form-group">
-
-                                    <input type="hidden" class="form-control" name="clientId" value="{{ $client->id }}">
-                                </div>
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="eventName" placeholder="Event Name" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="date" class="form-control" name="eventDate" placeholder="Date" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="venue" placeholder="Venue" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="city" placeholder="city" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="time" class="form-control" name="time" placeholder="time" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <textarea name="eventNotes" class="form-control" rows="8" placeholder="notes"></textarea>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="file" class="form-control" name="artwork">
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="radio" name="isActive" value="0"> Inactive
-                                    <input type="radio" name="isActive" value="1"> Active
-                                </div>
-
-                                <button type="submit" class="btn-md btn-success">Save Event</button>
-
-
-                            </form>
+                            <div class="pull-right btn-group-sm">
+                                <a href="{{ route('admin.tickets.events.edit', $event->id) }}" class="btn btn-success waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Edit">
+                                    <i class="fa fa-pencil"></i>
+                                </a>
+                                <a href="#" class="btn btn-danger waves-effect waves-light tooltips" data-placement="top" data-toggle="tooltip" data-original-title="Delete">
+                                    <i class="fa fa-close"></i>
+                                </a>
+                            </div>
+                            <div class="info">
+                                <h4>{{ $event->eventName }}</h4>
+                                <p class="text-muted">{{ $event->eventDate }} - {{ $event->time }}</p>
+                            </div>
                         </div>
-                        <div class="col-md-2"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        <div class="clearfix"></div>
+                        <hr/>
+                        <ul class="social-links list-inline">
+                            {{ $event->notes }}
+                        </ul>
+                    </div> <!-- panel-body -->
+                </div> <!-- panel -->
+            </div> <!-- end col -->
+        @endforeach
 
     </div> <!-- End row -->
 
