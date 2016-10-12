@@ -25,6 +25,7 @@ class AuthenticateController extends Controller
     {
         $this->middleware('jwt.auth', ['except' => ['authenticate']]);
         $this->middleware('CORS');
+        $this->middleware('appAuthenticate', ['except' => ['authenticate']]);
     }
 
     public function authenticate(Request $request)
@@ -50,32 +51,10 @@ class AuthenticateController extends Controller
 
     public function index()
     {
-        // Retrieve Authenticated USer the users in the database and return them
-        try {
-
-            if (! $user = JWTAuth::parseToken()->authenticate()) {
-                return response()->json(['user_not_found'], 404);
-            }
-
-        } catch (TokenExpiredException $e) {
-
-            return response()->json(['token_expired'], $e->getStatusCode());
-
-        } catch (TokenInvalidException $e) {
-
-            return response()->json(['token_invalid'], $e->getStatusCode());
-
-        } catch (JWTException $e) {
-
-            return response()->json(['token_absent'], $e->getStatusCode());
-
-        }
-
         $newToken = JWTAuth::parseToken()->refresh();
-
         //dd($newToken);
-
         // the token is valid and we have found the user via the sub claim
+        $user = User::whereId(Auth::user()['id'])->first()->toArray();
         return response(compact('user'))
             ->header('token', $newToken);
     }

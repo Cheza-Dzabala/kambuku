@@ -32,8 +32,6 @@ class AppdashBoardController extends Controller
     public function userDetails($id)
     {
         $listing = classifieds::whereId($id)->first();
-
-
         $userDetails = User::whereId($listing->user_id)->first();
         return $userDetails->toJson();
     }

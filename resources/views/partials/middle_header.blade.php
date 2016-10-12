@@ -70,9 +70,9 @@
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
                         <li><a href="{{ route('messages') }}"><i class="fa fa-envelope"></i> My Messages</a></li>
+                        <li><a href="{{ route('events') }}"><i class="fa fa-ticket"></i> Events</a></li>
                         <li><a href="{{ route('profile') }}"><i class="fa fa-user"></i> My Account</a></li>
                         @endif
-                        <li><a href="{{ route('classifieds.create') }}"><i class="fa fa-star"></i> {{ Lang::get('actions.post_ad') }}</a></li>
                        @if (Auth::check())
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-lock"></i>Logout</a></li>
                        @else

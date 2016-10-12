@@ -113,8 +113,6 @@ class adminTicketController extends Controller
         $event = events::whereId($request->id)->first();
         $event->fill($input);
         $event->save();
-
-
         return redirect()->route('admin.tickets.events.view', $request->clientId);
     }
 

@@ -54,6 +54,7 @@ class Kernel extends HttpKernel
         'activationcheck' => \App\Http\Middleware\checkActivity::class,
         'locale' => \App\Http\Middleware\Locale::class,
         'CORS' => \App\Http\Middleware\CORS::class,
+        'appAuthenticate' => \App\Http\Middleware\appAuthenticate::class,
         'jwt.auth' => 'Tymon\JWTAuth\Middleware\GetUserFromToken',
         'jwt.refresh' => 'Tymon\JWTAuth\Middleware\RefreshToken',
     ];

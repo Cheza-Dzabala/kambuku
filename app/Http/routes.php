@@ -68,6 +68,18 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    Route::get('tickets/view',
+        [
+            'uses' => 'App\appTicketsController@viewTickets'
+        ]
+    );
+
+    Route::post('tickets/create',
+        [
+            'uses' => 'App\appTicketsController@createTicket'
+        ]
+    );
+
     Route::resource('authenticate', 'App\AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'App\AuthenticateController@authenticate');
 
@@ -81,6 +93,40 @@ Route::group(['middleware' => ['web']], function () {
 
     //Natural User Routes
     Route::auth();
+
+    Route::get('events',
+        [
+            'as' => 'events',
+            'uses' => 'eventsController@index'
+        ]
+    );
+
+    Route::get('ticket/buy/{id}',
+        [
+            'as' => 'ticket.buy',
+            'uses' => 'ticketController@buyTicket'
+        ]
+    );
+
+    Route::post('tickets/generate',
+        [
+            'as' => 'ticket.generate',
+            'uses' => 'ticketController@generate'
+        ]
+    );
+
+    Route::get('ticket/buy/{id}',
+        [
+            'as' => 'ticket.buy',
+            'uses' => 'ticketController@buyTicket'
+        ]
+    );
+    Route::get('tickets/view',
+        [
+            'as' => 'tickets.view',
+            'uses' => 'ticketController@viewTickets'
+        ]
+    );
 
     Route::get('lang/{lang}',
         [
