@@ -35,7 +35,12 @@
                                                 <h2>{{ number_format($event['price']  , 2) }}</h2>
                                                 <p>{{ $event['eventName'] }}</p>
                                                 @if($event['isActive'] == '1')
-                                                    <a href="" class="btn btn-default add-to-cart">
+                                                    @if($event['bulkCode'] != null)
+                                                        <?php $code = $event['bulkCode'] ?>
+                                                    @else
+                                                        <?php $code = $event['referenceCode'] ?>
+                                                    @endif
+                                                    <a href="{{ route('codes.view', $event['id']) }}" class="btn btn-default add-to-cart">
                                                         View Ticket(s)
                                                     </a>
                                                 @else

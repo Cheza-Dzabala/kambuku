@@ -80,6 +80,8 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+
+
     Route::resource('authenticate', 'App\AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'App\AuthenticateController@authenticate');
 
@@ -125,6 +127,20 @@ Route::group(['middleware' => ['web']], function () {
         [
             'as' => 'tickets.view',
             'uses' => 'ticketController@viewTickets'
+        ]
+    );
+
+    Route::get('view/tickets/qrCodes/{id}',
+        [
+            'as' => 'codes.view',
+            'uses' => 'ticketController@viewCodes'
+        ]
+    );
+
+    Route::get('view/ticket/generate/{text}',
+        [
+                    'as' => 'tickets.barcode',
+                    'uses' => 'ticketController@makeQrCode'
         ]
     );
 
@@ -318,6 +334,7 @@ Route::group(['middleware' => ['web']], function () {
                 'uses' => 'Admin\adminTicketController@eventUpdate'
             ]
         );
+
 
 
 

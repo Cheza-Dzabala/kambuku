@@ -23,7 +23,7 @@
             </div>
             <div class="col-sm-9">
                 <div class="user-container">
-                    <h2 class="title text-center">Events</h2>
+                    <h2 class="title text-center">Events | <a href="{{ route('tickets.view') }}">My Tickets</a></h2>
                     <div id="w">
                         <div id="content" class="clearfix">
                             @foreach($events as $event)
