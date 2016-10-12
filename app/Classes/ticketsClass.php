@@ -37,7 +37,7 @@ class ticketsClass
         $host = eventClients::whereId($event->clientId)->first();
         // dd($host);
         $securityKey = encrypt($request->securityKey);
-
+       // dd($securityKey);
 
         if ($request-> numberTickets > 1)
         {
@@ -143,7 +143,7 @@ class ticketsClass
         $codes = eventTickets::get();
         foreach ($codes as $code)
         {
-            if ($code->bulkCode == $bulkCode)
+            if ($code->$referenceCode == $referenceCode)
             {
                 $this->restartFunctionReferenceCode($event);
             }

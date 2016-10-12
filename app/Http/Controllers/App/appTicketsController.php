@@ -9,6 +9,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use Illuminate\Support\Facades\Input;
 use Tymon\JWTAuth\Facades\JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
@@ -27,7 +28,8 @@ class appTicketsController extends Controller
         $newToken = $this->generateToken();
         $ticketClass = new ticketsClass();
         $ticketGenerate = $ticketClass->generate($request);
-        return $ticketGenerate->header('token', $newToken);
+
+        return response(compact('ticketGenerate'))->header('token', $newToken);
     }
 
     public function viewTickets()
