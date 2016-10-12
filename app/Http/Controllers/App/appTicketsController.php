@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\App;
 
 use App\Classes\ticketsClass;
+use App\events;
+use App\eventTickets;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Tymon\JWTAuth\Facades\JWTAuth;
+use Tymon\JWTAuth\Exceptions\JWTException;
 
 class appTicketsController extends Controller
 {
@@ -15,7 +18,7 @@ class appTicketsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('appAuthenticate');
+        $this->middleware('appAuthenticate',  ['except' => ['allTickets']]);
 
     }
 
@@ -32,7 +35,8 @@ class appTicketsController extends Controller
         $newToken = $this->generateToken();
         $ticketClass = new ticketsClass();
         $viewTickets = $ticketClass->viewTicket();
-        return $viewTickets->header('token', $newToken);
+        return response(compact('viewTickets'))
+            ->header('token', $newToken);
     }
 
     /**
@@ -40,7 +44,15 @@ class appTicketsController extends Controller
      */
     private function generateToken()
     {
-        $newToken = JWTAuth::parseToken()->refresh();
+        $newToken = JWTAuth::getToken();
         return $newToken;
+    }
+
+    public function allTickets()
+    {
+        $class = new ticketsClass();
+        $tickets = $class->allTicket();
+        $newToken = $this->generateToken();
+        return $tickets->toJson()->header('token', $newToken);
     }
 }

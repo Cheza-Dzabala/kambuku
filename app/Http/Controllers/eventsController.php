@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\ticketsClass;
 use App\eventClients;
 use App\events;
 use Illuminate\Http\Request;
@@ -13,13 +14,8 @@ class eventsController extends Controller
     //
     public function index()
     {
-        $events = events::orderBy('id', 'DESC')->whereIsactive('1')->get();
-
-        foreach ($events as $event)
-        {
-            $host = eventClients::whereId($event->clientId)->first();
-            $event = array_add($event, 'host', $host->name);
-        }
+        $class = new ticketsClass();
+        $events = $class->allTicket();
 
         return view('events.index', compact('events'));
     }

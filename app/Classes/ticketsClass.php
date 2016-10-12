@@ -17,6 +17,18 @@ use Illuminate\Support\Facades\Auth;
 
 class ticketsClass
 {
+    public function allTicket()
+    {
+        $events = events::orderBy('id', 'DESC')->whereIsactive('1')->get();
+
+        foreach ($events as $event)
+        {
+            $host = eventClients::whereId($event->clientId)->first();
+            $event = array_add($event, 'host', $host->name);
+        }
+
+        return $events;
+    }
     public function generate(Request $request)
     {
         //dd($request);
@@ -49,6 +61,7 @@ class ticketsClass
             ]);
             $i++;
         }
+
 
 
         return 'successful';

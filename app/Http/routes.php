@@ -74,6 +74,12 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    Route::get('tickets',
+        [
+            'uses' => 'App\appTicketsController@allTickets'
+        ]
+    );
+
     Route::post('tickets/create',
         [
             'uses' => 'App\appTicketsController@createTicket'
