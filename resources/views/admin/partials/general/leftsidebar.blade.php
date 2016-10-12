@@ -50,8 +50,15 @@
                     <ul class="list-unstyled">
                         <li><a href="{{ route('admin.homesliderconfig') }}">Home Slider</a></li>
                         <li><a href="{{ route('admin.adverts_config') }}">Paid Adverts</a></li>
-                        <li><a href="{{ route('admin.tickets') }}">Tickets</a></li>
 
+                    </ul>
+                </li>
+
+                <li class="has_sub">
+                    <a href="#" class="waves-effect"><i class="md md-event"></i><span> Events </span><span class="pull-right"><i class="md md-add"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ route('admin.tickets') }}">Clients</a></li>
+                        <li><a href="{{ route('admin.tickets.index') }}">Tickets</a></li>
                     </ul>
                 </li>
 

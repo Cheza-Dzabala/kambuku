@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\eventClients;
 use App\events;
+use App\eventTickets;
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
@@ -116,4 +118,61 @@ class adminTicketController extends Controller
         return redirect()->route('admin.tickets.events.view', $request->clientId);
     }
 
+    public function ticketsIndex()
+    {
+        $tickets = eventTickets::get();
+
+        foreach ($tickets as $ticket)
+        {
+            $user = User::whereId($ticket->userId)->first();
+            $event = events::whereId($ticket->eventId)->first();
+            $ticket = array_add($ticket, 'eventName', $event->eventName);
+            $ticket = array_add($ticket, 'venue', $event->venue);
+            $ticket = array_add($ticket, 'date', $event->eventDate);
+            $ticket = array_add($ticket, 'user', $user->name);
+            $ticket = array_add($ticket, 'mobile', $user->mobile);
+        }
+
+        return view('admin.tickets.activity', compact('tickets'));
+    }
+
+    public function moderate($id)
+    {
+        $ticket = eventTickets::whereId($id)->first();
+
+        if($ticket->bulkCode == null)
+        {
+            $ticketCount = '1';
+            $code = $ticket->referenceCode;
+            $activeStatus = $ticket->isActive;
+            $type = 'single';
+        }else{
+            $ticketCount = eventTickets::whereBulkcode($ticket->bulkCode)->count();
+            $code = $ticket->bulkCode;
+            $activeStatus = $ticket->isActive;
+            $type = 'bulk';
+        }
+
+
+        return view('admin.tickets.moderate', compact('ticketCount', 'code', 'activeStatus', 'type'));
+    }
+
+    public function saveModeration(Request $request)
+    {
+        if($request->type == 'bulk')
+        {
+            $tickets = eventTickets::whereBulkcode($request->code)->get();
+            foreach ($tickets as $ticket)
+            {
+                $ticket->isActive = $request->isActive;
+                $ticket->save();
+            }
+        }else{
+            $ticket = eventTickets::whereReferencecode($request->code)->first();
+            $ticket->isActive = $request->isActive;
+            $ticket->save();
+        }
+
+        return redirect()->route('admin.tickets.index');
+    }
 }

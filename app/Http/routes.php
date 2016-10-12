@@ -336,6 +336,27 @@ Route::group(['middleware' => ['web']], function () {
         );
 
 
+        Route::get('/tickets/index/',
+            [
+                'as' => 'admin.tickets.index',
+                'uses' => 'Admin\adminTicketController@ticketsIndex'
+            ]
+        );
+
+        Route::get('/tickets/moderate/{id}',
+            [
+                'as' => 'admin.tickets.moderate',
+                'uses' => 'Admin\adminTicketController@moderate'
+            ]
+        );
+
+        Route::post('/tickets/moderate/',
+            [
+                'as' => 'admin.tickets.saveModeration',
+                'uses' => 'Admin\adminTicketController@saveModeration'
+            ]
+        );
+
 
 
 
