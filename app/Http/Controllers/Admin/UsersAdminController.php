@@ -115,6 +115,7 @@ class UsersAdminController extends Controller
         $user->address = $request->address;
         $user->mobile = $request->mobile;
         $user->email = $request->email;
+        $user->canList = $request->canList;
 
         $user->save();
 

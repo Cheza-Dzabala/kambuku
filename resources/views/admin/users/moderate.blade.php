@@ -153,6 +153,21 @@
                                                     <option value="0" >Inactive</option>
                                                 @endif
                                             </select>
+                                            <hr>
+                                            <select name="canList" class="form-control">
+                                                @if($user->canList == '1')
+                                                    <option value="1" selected>Can List</option>
+                                                    <option value="0">Cannot List</option>
+                                                @elseif($user->canList == '0')
+                                                    <option value="0" selected>Cannot List</option>
+                                                    <option value="1" >Can List</option>
+                                                @else
+                                                    <option value="2">Select Status</option>
+                                                    <option value="1" >Can List</option>
+                                                    <option value="0" >Cannot List</option>
+                                                @endif
+                                            </select>
+
                                         </div>
                                     </div>
                                     <!-- Personal-Information -->

@@ -16,6 +16,7 @@ class ClassifiedListingValidator extends Request
         return true;
     }
 
+
     /**
      * Get the validation rules that apply to the request.
      *
@@ -28,6 +29,7 @@ class ClassifiedListingValidator extends Request
             'name' => 'required|string',
             'description' => 'required',
             'price' => 'required|numeric',
+            'originalPrice' => 'required|numeric',
             'tags' => 'required',
             'category' => 'required',
             'subcategory' => 'required'

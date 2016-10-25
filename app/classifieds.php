@@ -11,6 +11,6 @@ class classifieds extends Model
 
     protected $fillable = [
         'user_id', 'title', 'description', 'category_id', 'sub_category_id', 'country', 'city', 'keywords', 'image_path',
-        'country_id', 'state_id', 'city_id', 'have_image', 'condition', 'price', 'is_active'
+        'country_id', 'state_id', 'city_id', 'have_image', 'condition', 'price', 'is_active', 'originalPrice', 'discounted', 'voucherPrice'
     ];
 }

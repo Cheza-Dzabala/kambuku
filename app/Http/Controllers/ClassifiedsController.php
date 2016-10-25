@@ -70,6 +70,7 @@ class ClassifiedsController extends Controller
                                 ClassifiedThumbnails $classifiedThumbnails)
     {
         $this->middleware('auth', ['except' => ['show']]);
+        $this->middleware('checkListingAbility', ['only' => ['create']]);
         $this->classifieds = $classifieds;
         $this->user = $user;
         $this->condition_types = $condition_types;
@@ -110,37 +111,43 @@ class ClassifiedsController extends Controller
         $user = Auth::user()['id'];
 
         $classifieds = $this->create_classified($request, $user);
+           if($classifieds == 'invalidDiscount')
+           {
+               Session::flash('invalidDiscount', 'The Price Must be less than the original price');
+               return redirect()->back();
+           }else{
+               $classified_id = $classifieds->id;
+               $request->request->add(['classified_id' => $classified_id]);
 
-        $classified_id = $classifieds->id;
-        $request->request->add(['classified_id' => $classified_id]);
+               $counter = 0;
 
-        $counter = 0;
+               $check = '';
 
-        $check = '';
-
-        while($counter <= 5)
-        {
-            if (isset($request['file'.$counter])){
-                $check = 'checked';
-            }
-            $counter++;
-        }
+               while($counter <= 5)
+               {
+                   if (isset($request['file'.$counter])){
+                       $check = 'checked';
+                   }
+                   $counter++;
+               }
 
 
-        if ($check == '')
-        {
+               if ($check == '')
+               {
 
 
-            $listing = classifieds::whereId($request->classified_id)->first();
+                   $listing = classifieds::whereId($request->classified_id)->first();
 
-            $listing->image_path = 'placeholder.jpg';
+                   $listing->image_path = 'placeholder.jpg';
 
-            $listing->save();
-            Session::flash('savedListing', 'Successfully Saved Your Listing');
-            return redirect(route('profile'));
-        }else{
-            return $this->process_images($request);
-        }
+                   $listing->save();
+                   Session::flash('savedListing', 'Successfully Saved Your Listing');
+                   return redirect(route('profile'));
+               }else{
+                   return $this->process_images($request);
+               }
+
+           }
 
 
 
@@ -507,6 +514,26 @@ class ClassifiedsController extends Controller
      */
     private function create_classified(Request $request, $user)
     {
+        if (isset($request['price']) && isset($request['originalPrice']))
+        {
+            if ($request['price'] >= $request['originalPrice'])
+            {
+                return 'invalidDiscount';
+            }else{
+                $discounted = '1';
+                $discount = $request['originalPrice'] - $request['price'];
+
+                if($discount >= 100000)
+                {
+                    $voucherPrice = $discount * 0.1;
+                }else{
+                    $voucherPrice = $discount * 0.2;
+                }
+
+                //dd('Voucher Price is '.number_format($voucherPrice, 2).'and The Discount is '.number_format($discount, 2));
+            }
+        }
+
         $classifieds = classifieds::create([
             'user_id' => $user,
             'title' => $request['name'],
@@ -516,6 +543,9 @@ class ClassifiedsController extends Controller
             'sub_category_id' => $request['subcategory'],
             'description' => $request['description'],
             'keywords' => $request['tags'],
+            'originalPrice' => $request['originalPrice'],
+            'discounted' => $discounted,
+            'voucherPrice' => $voucherPrice,
             'is_active' => $request['is_active'],
             'city_id' => '4',
             'country_id' => '4',

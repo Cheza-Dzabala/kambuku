@@ -51,6 +51,18 @@
                             </div>
                         </div>
 
+
+                        <div class="form-group{{ $errors->has('originalPrice') ? ' has-error' : '' }}" style="padding-top: 5%">
+                            <div class=" col-md-6">
+                                <input type="number" name="originalPrice" min="0" max="500000000" class="form-control" placeholder="Original Price" required>
+                                @if ($errors->has('originalPrice'))
+                                    <span class="help-block">
+                                             <strong>{{ $errors->first('originalPrice') }}</strong>
+                                        </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('decription') ? ' has-error' : '' }}" style="padding-top: 5%">
                                 <div class="col-md-12">
                                 <textarea name="description" id="descrption"  class="form-control" rows="8" placeholder="Product Description" required></textarea>

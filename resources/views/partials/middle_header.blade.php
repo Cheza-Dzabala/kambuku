@@ -61,7 +61,12 @@
                         </div>
                     @endif
 
-
+                    @if (Session::has('CantList'))
+                        <div class="alert alert-danger alert-dismissable col-md-12">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{ Session::get('CantList') }}
+                        </div>
+                    @endif
 
                 </div>
             </div>
@@ -72,6 +77,9 @@
                         <li><a href="{{ route('messages') }}"><i class="fa fa-envelope"></i> My Messages</a></li>
                         <li><a href="{{ route('events') }}"><i class="fa fa-ticket"></i> Events</a></li>
                         <li><a href="{{ route('profile') }}"><i class="fa fa-user"></i> My Account</a></li>
+                            @if(Auth::user()['canList'] == '1')
+                                <li><a href="{{ route('classifieds.create') }}"><i class="fa fa-plus-circle"></i> Post Listing</a></li>
+                            @endif
                         @endif
                        @if (Auth::check())
                             <li><a href="{{ url('/logout') }}"><i class="fa fa-lock"></i>Logout</a></li>

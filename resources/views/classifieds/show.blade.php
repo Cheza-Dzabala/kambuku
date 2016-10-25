@@ -76,12 +76,27 @@
                          <small class="col-lg-12 col-md-12 col-sm-12">Posted: {{ $difference }}
                          </small>
                         <!--<img src="images/product-details/rating.png" alt="" />-->
-								<span>
-									<span>MK {{ number_format($classified_details->price, 2) }}</span>
-                                    @if(Auth::user()['id'] != $user_info->id)
-									    <a href="#reviews"><button type="button" class="btn btn-default cart">
-                                            Review Classified
-                                        </button></a>
+
+                                <span>
+                                    @if($classified_details->discounted == '1')
+                                        <span style="color: #8a1f11; text-decoration: line-through">
+                                        <h3>MK {{ number_format($classified_details->originalPrice, 2) }}</h3>
+                                        </span>
+
+                                        <span>MK {{ number_format($classified_details->price, 2) }}</span>
+                                            <span style="color: #8c8c8c">
+                                                <h6>Save MK {{ number_format(($classified_details->originalPrice - $classified_details->price), 2) }}</h6>
+                                            </span>
+
+                                        @if(Auth::user()['id'] != $user_info->id)
+                                            <a href="#reviews">
+                                                <button type="button" class="btn btn-default cart">
+                                                    Review Classified
+                                                </button>
+                                            </a>
+                                        @endif
+                                        @else
+                                        <span>MK {{ number_format($classified_details->price, 2) }}</span>
                                     @endif
 								</span>
                         @if(Auth::check())
@@ -94,7 +109,15 @@
                                    </a>
                                </p>
                             @endif
+                                <p>
+                                    <a href="#" data-toggle="modal">
+                                        <button type="button" class="btn btn-success">
+                                            Buy This Voucher (MK {{ number_format($classified_details->voucherPrice, 2) }})
+                                        </button>
+                                    </a>
+                                </p>
                         @endif
+
                         <p><b>Email Address : </b>{{ $user_info->email }}</p>
                         <p><b>Location : </b>{{ $location->name }}</p>
                         <p><b>Phone #:</b> @if($user_info->mobile == '')None Listed @else {{  $user_info->mobile }}@endif</p>

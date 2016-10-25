@@ -21,17 +21,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-       $image_path = Config::whereName('image_dir')->first();
-
-     $thumb_image_path = Config::whereName('thumbnail_image_dir')->first();
-     View::share(['image_path' => $image_path, 'thumb_image_path' => $thumb_image_path]);
-
-        view()->composer('*', function($view) {
-            $user_details = User::whereId(Auth::user()['id'])->first();
-            $country = countries::whereId($user_details['country_id'])->get()->first();
-           // dd($user_details);
-            $view->with(['user_details' => $user_details, 'country' => $country]);
-        });
+        $this->getPaths();
     }
 
 
@@ -43,5 +33,20 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         //
+    }
+
+    public function getPaths()
+    {
+        $image_path = Config::whereName('image_dir')->first();
+
+        $thumb_image_path = Config::whereName('thumbnail_image_dir')->first();
+        View::share(['image_path' => $image_path, 'thumb_image_path' => $thumb_image_path]);
+
+        view()->composer('*', function ($view) {
+            $user_details = User::whereId(Auth::user()['id'])->first();
+            $country = countries::whereId($user_details['country_id'])->get()->first();
+            // dd($user_details);
+            $view->with(['user_details' => $user_details, 'country' => $country]);
+        });
     }
 }
