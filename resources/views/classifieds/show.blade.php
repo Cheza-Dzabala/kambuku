@@ -109,13 +109,15 @@
                                    </a>
                                </p>
                             @endif
-                                <p>
-                                    <a href="#" data-toggle="modal">
-                                        <button type="button" class="btn btn-success">
-                                            Buy This Voucher (MK {{ number_format($classified_details->voucherPrice, 2) }})
-                                        </button>
-                                    </a>
-                                </p>
+                            @if($classified_details->discounted == '1')
+                                    <p>
+                                        <a href="#" data-toggle="modal">
+                                            <button type="button" class="btn btn-success">
+                                                Buy This Voucher (MK {{ number_format($classified_details->voucherPrice, 2) }})
+                                            </button>
+                                        </a>
+                                    </p>
+                            @endif
                         @endif
 
                         <p><b>Email Address : </b>{{ $user_info->email }}</p>
