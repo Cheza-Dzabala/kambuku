@@ -39,7 +39,7 @@
                                     <img src="{{ $image_path->value.$value['image_path'] }}" alt="" />
                                     <h2>MK {{ number_format($value['price'], 2) }}</h2>
 
-                                    <p>{{ $value['title'] }}</p>
+                                    <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{ $value['title'] }}</p>
                                     <a href="#" class="btn btn-default add-to-cart">View Item</a>
                                 </div>
                                 <div class="product-overlay">
@@ -71,7 +71,7 @@
                                         <img src="{{ $image_path->value.$value['image_path'] }}" alt="" />
                                         <h2>MK {{ number_format($value['price'], 2) }}</h2>
 
-                                        <p>{{ $value['title'] }}</p>
+                                        <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{ $value['title'] }}</p>
                                         <a href="#" class="btn btn-default add-to-cart">View Item</a>
                                     </div>
                                     <div class="product-overlay">
@@ -126,7 +126,7 @@
                                                         <div class="productinfo text-center">
                                                             <img src="{{ $image_path->value.$v['image_path'] }}" alt="{{ $v['title'] }}" />
                                                             <h2>Mk {{ number_format($v['price'],2) }}</h2>
-                                                            <p>{{ $v['title'] }}</p>
+                                                            <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{ $v['title'] }}</p>
                                                             <a href="{{ route('classifieds.show', [$v['id']]) }}"class="btn btn-default add-to-cart">View Item</a>
                                                         </div>
                                                     </div>

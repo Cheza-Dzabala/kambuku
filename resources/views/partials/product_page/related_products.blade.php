@@ -6,7 +6,7 @@
                     <div class="productinfo text-center">
                         <img src="{{ asset($image_path->value.$value['image_path']) }}" height="150px" width="50px" alt="" />
                         <h2>{{ number_format($value['price'], 2) }}</h2>
-                        <p>{{ $value['title'] }}</p>
+                        <p style="white-space: nowrap; text-overflow: ellipsis; overflow: hidden;">{{ $value['title'] }}</p>
                         <a href="{{ route('classifieds.show', [$value['id']]) }}" type="button" class="btn btn-default add-to-cart">View Item</a>
                     </div>
                 </div>
