@@ -10,6 +10,7 @@ use App\Config;
 use App\Events\TestEvent;
 use App\sub_categories;
 use App\thumbnails;
+use App\vouchers;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -164,15 +165,30 @@ class ClassifiedsController extends Controller
     {
         //
         list($classified_details, $condition, $user_info) = $this->compile($id);
-
+        $paid = null;
         $location = cities::whereId($user_info->city_id)->first();
-
         $created = new Carbon($classified_details->created_at);
         $now = Carbon::now();
         $difference = ($created->diff($now)->days <1) ? 'Today' : $created->diffForHumans($now);
 
+        $vouchers = vouchers::whereUserid(Auth::user()['id'])
+            ->whereListingid($id)->first();
 
-        return $this->check_for_thumbnails($classified_details, $user_info, $condition, $location, $difference);
+        if($vouchers != null)
+        {
+            $hasVoucher = '1';
+            if($vouchers->isActive == '1')
+            {
+                $paid = '1';
+            }
+        }else{
+            $hasVoucher = '0';
+        }
+
+
+
+
+        return $this->check_for_thumbnails($classified_details, $user_info, $condition, $location, $difference, $hasVoucher, $paid);
 
 
     }
@@ -560,14 +576,14 @@ class ClassifiedsController extends Controller
      * @param $condition
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    private function check_for_thumbnails($classified_details, $user_info, $condition, $location, $difference)
+    private function check_for_thumbnails($classified_details, $user_info, $condition, $location, $difference, $hasVoucher, $paid)
     {
         if ($classified_details['have_image'] == 1) {
             $thumbnails = $this->classifiedThumbnails->whereClassified_id($classified_details['id'])->get()->toArray();
             $images =  $this->classified_images->whereClassified_id($classified_details['id'])->get()->toArray();
-            return view('classifieds.show', compact('user_info', 'classified_details', 'condition', 'thumbnails', 'images', 'location', 'difference'));
+            return view('classifieds.show', compact('user_info', 'classified_details', 'condition', 'thumbnails', 'images', 'location', 'difference', 'hasVoucher', 'paid'));
         } else {
-            return view('classifieds.show', compact('user_info', 'classified_details', 'condition', 'location', 'difference'));
+            return view('classifieds.show', compact('user_info', 'classified_details', 'condition', 'location', 'difference', 'hasVoucher', 'paid'));
         }
     }
     /**

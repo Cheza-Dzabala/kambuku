@@ -102,6 +102,7 @@ class ProfileController extends Controller
         $user->email = $request->email;
         $user->address = $request->address;
         $user->city_id = $request->city_id;
+        $user->voucher_instructions = $request->voucher_instructions;
         $user->facebook_page = $request->facebook_page;
         $user->website = $request->website;
         $user->twitter_handle = $request->twitter_handle;

@@ -101,6 +101,13 @@
                                     </select>
                                 </div>
                             </div>
+                            @if(Auth::user()['canList'] == '1')
+                                <h2>Voucher <small class="text-muted"  style="font-size: small">These instructions are printed on the voucher</small></h2>
+                                <label class="col-lg-3 control-label">Voucher Instructions:</label>
+                                <div class="col-lg-8">
+                                    <textarea name="voucher_instructions" cols="10" rows="5" class="form-control">{{ $user_details['voucher_instructions'] }}</textarea>
+                                </div>
+                            @endif
 
                             <h2>Social <small class="text-muted"  style="font-size: small">Help your clients engage with you</small></h2>
 

@@ -1,7 +1,7 @@
 <div class="header-middle"><!--header-middle-->
     <div class="container">
         <div class="row">
-            <div class="col-sm-4 col-lg-6">
+            <div class="col-sm-4 col-lg-4">
                 <div class="logo pull-left">
                     <a href="{{ url('/') }}"><img src="{{ asset('/images/home/logo.png') }}" alt="" width="80px" height="auto"/></a>
                 </div>
@@ -68,14 +68,22 @@
                         </div>
                     @endif
 
+                    @if (Session::has('savedVoucher'))
+                        <div class="alert alert-success alert-dismissable col-md-12">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                            {{ Session::get('savedVoucher') }}
+                        </div>
+                    @endif
+
                 </div>
             </div>
-            <div class="col-sm-8 col-lg-6">
+            <div class="col-sm-8 col-lg-8">
                 <div class="shop-menu pull-right">
                     <ul class="nav navbar-nav">
                         @if (Auth::check())
-                        <li><a href="{{ route('messages') }}"><i class="fa fa-envelope"></i> My Messages</a></li>
+
                         <li><a href="{{ route('events') }}"><i class="fa fa-ticket"></i> Events</a></li>
+                        <li><a href="{{ route('voucher.show') }}"><i class="fa fa-ticket"></i> Product Vouchers</a></li>
                         <li><a href="{{ route('profile') }}"><i class="fa fa-user"></i> My Account</a></li>
                             @if(Auth::user()['canList'] == '1')
                                 <li><a href="{{ route('classifieds.create') }}"><i class="fa fa-plus-circle"></i> Post Listing</a></li>

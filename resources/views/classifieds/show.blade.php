@@ -110,13 +110,36 @@
                                </p>
                             @endif
                             @if($classified_details->discounted == '1')
-                                    <p>
-                                        <a href="#" data-toggle="modal">
-                                            <button type="button" class="btn btn-success">
-                                                Buy This Voucher (MK {{ number_format($classified_details->voucherPrice, 2) }})
-                                            </button>
-                                        </a>
-                                    </p>
+                                   @if($hasVoucher == '0')
+                                        <p>
+                                            <a href="{{ route('voucher.create', $classified_details->id) }}" >
+                                                <button type="button" class="btn btn-success">
+                                                    Buy This Voucher (MK {{ number_format($classified_details->voucherPrice, 2) }})
+                                                </button>
+                                            </a>
+                                        </p>
+                                       @else
+                                       @if($paid == 1)
+                                            <p>
+                                                <a href="" data-toggle="modal">
+                                                    <button type="button" class="btn btn-info">
+                                                        View Voucher
+                                                    </button>
+                                                </a>
+                                            </p>
+                                       @else
+                                            <p>
+                                                <button type="button" class="btn btn-info">
+                                                        Voucher In Moderation
+                                                </button>
+                                                <small>
+                                                    <a href="{{ route('voucher.instructions') }}" style="color: #8c8c8c;">
+                                                        View Payment Instructions
+                                                    </a>
+                                                </small>
+                                            </p>
+                                       @endif
+                                    @endif
                             @endif
                         @endif
 

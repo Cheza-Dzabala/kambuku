@@ -102,6 +102,26 @@ Route::group(['middleware' => ['web']], function () {
     //Natural User Routes
     Route::auth();
 
+    Route::get('voucher/create/{id}',
+        [
+            'as' => 'voucher.create',
+            'uses' => 'voucherController@processVoucher'
+        ]
+    );
+    Route::get('vouchers/',
+        [
+            'as' => 'voucher.show',
+            'uses' => 'voucherController@loadVouchers'
+        ]
+    );
+    Route::get('vouchers/instructions',
+        [
+            'as' => 'voucher.instructions',
+            'uses' => 'voucherController@instructions'
+        ]
+    );
+
+
     Route::get('events',
         [
             'as' => 'events',
@@ -259,7 +279,6 @@ Route::group(['middleware' => ['web']], function () {
     );
 
     Route::get('search', 'SearchController@index');
-
   //  Route::get('classifieds/new', ['as' => 'post_new_ad', 'uses' =>'ClassifiedsController@index']);
     Route::resource('classifieds', 'ClassifiedsController');
 
