@@ -46,8 +46,8 @@ class AdsProvider extends ServiceProvider
 
                 $ads = paidAdverts::whereId($ad->advert_id)
                     ->first();
-
-                if ($ads != null)
+                dd($ads);
+                if ($ads)
                 {
                     $temp = $ads->toArray();
                     if ($temp['ad_type'] == '2' or $temp['ad_type'] == '3') {
