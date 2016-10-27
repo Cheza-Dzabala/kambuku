@@ -44,13 +44,18 @@ class AdsProvider extends ServiceProvider
 
             foreach ($landingAds as $ad) {
 
-                $temp = paidAdverts::whereId($ad->advert_id)
+                $ads = paidAdverts::whereId($ad->advert_id)
                     ->first()
                     ->toArray();
 
-                if ($temp['ad_type'] == '2' or $temp['ad_type'] == '3') {
-                    $adDetails = array_add($adDetails, $temp['ad_name'], $temp);
+                if ($ads != null)
+                {
+                    $temp = $ads->toArray();
+                    if ($temp['ad_type'] == '2' or $temp['ad_type'] == '3') {
+                        $adDetails = array_add($adDetails, $temp['ad_name'], $temp);
+                    }
                 }
+
             }
 
 
