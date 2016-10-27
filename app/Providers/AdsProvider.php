@@ -46,7 +46,7 @@ class AdsProvider extends ServiceProvider
 
                 $ads = paidAdverts::whereId($ad->advert_id)
                     ->first();
-                dd($ads);
+
                 if ($ads)
                 {
                     $temp = $ads->toArray();
