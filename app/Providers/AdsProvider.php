@@ -45,8 +45,7 @@ class AdsProvider extends ServiceProvider
             foreach ($landingAds as $ad) {
 
                 $ads = paidAdverts::whereId($ad->advert_id)
-                    ->first()
-                    ->toArray();
+                    ->first();
 
                 if ($ads != null)
                 {
