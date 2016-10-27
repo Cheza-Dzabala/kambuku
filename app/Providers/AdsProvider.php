@@ -49,7 +49,7 @@ class AdsProvider extends ServiceProvider
 
                 if ($ads)
                 {
-                    $temp = $ads->toArray();
+                    $temp = $ads;
                     if ($temp['ad_type'] == '2' or $temp['ad_type'] == '3') {
                         $adDetails = array_add($adDetails, $temp['ad_name'], $temp);
                     }
