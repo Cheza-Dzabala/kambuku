@@ -14,7 +14,7 @@
     <link href="https://kambuku.com/public/admin/css/bootstrap.min.css" rel="stylesheet" />
 
     <!-- Font Icons -->
-    <link href="{{ asset('admin/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('/admin/assets/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/admin/assets/ionicon/css/ionicons.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('/admin/css/material-design-iconic-font.min.css') }}" rel="stylesheet">
 

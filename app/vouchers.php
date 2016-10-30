@@ -10,6 +10,6 @@ class vouchers extends Model
     protected $table = 'vouchers';
 
     protected $fillable = [
-       'userId', 'listingId', 'voucherCost', 'referenceCode', 'isActive', 'purchaseDate'
+       'userId', 'listingId', 'voucherCost', 'referenceCode', 'isActive', 'purchaseDate', 'isCollected', 'collectionDate', 'voucherCode'
     ];
 }

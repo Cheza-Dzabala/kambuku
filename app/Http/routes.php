@@ -285,10 +285,37 @@ Route::group(['middleware' => ['web']], function () {
     //Check what type of user has logged in or registered
     Route::get('/validate', 'UserType@check_type');
 
+    //Redirect To Merchant Page
 
 
    });
-   });
+});
+
+    Route::group(['prefix' => 'merchant'], function ()
+    {
+       Route::get('/index',
+           [
+                'as' => 'merchant.index',
+               'uses' => 'Merchant\merchantController@index'
+           ]
+       );
+
+       Route::post('/verify',
+           [
+                'as' => 'merchant.verify',
+               'uses' => 'Merchant\merchantController@verify'
+           ]
+       );
+
+       Route::get('/collect/{id}',
+           [
+                'as' => 'merchant.setCollected',
+               'uses' => 'Merchant\merchantController@setCollected'
+           ]
+       );
+
+
+    });
 
 
     //ADMIN Routes
@@ -301,6 +328,23 @@ Route::group(['middleware' => ['web']], function () {
             ]
         );
 
+        Route::get('/vouchers',
+            [
+                'as' => 'admin.vouchers',
+                'uses' => 'Admin\adminVoucherController@index'
+            ]);
+
+        Route::get('/vouchers/moderate/{code}',
+            [
+                'as' => 'admin.vouchers.moderate',
+                'uses' => 'Admin\adminVoucherController@moderate'
+            ]);
+
+        Route::post('/vouchers/moderate/',
+            [
+                'as' => 'admin.vouchers.saveModeration',
+                'uses' => 'Admin\adminVoucherController@saveModeration'
+            ]);
         /**
          * Tickets
          */
