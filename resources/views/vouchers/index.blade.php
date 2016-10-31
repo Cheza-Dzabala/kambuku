@@ -39,6 +39,7 @@
                                 <td class="price">Voucher Cost</td>
                                 <td class="price">Paid Status</td>
                                 <td class="price">Reference Code</td>
+                                <td class="price">Voucher Code</td>
                             </tr>
                             </thead>
                             <tbody>
@@ -80,6 +81,11 @@
                                     <td>
                                         <p style="font-weight: 800">
                                             {{ $voucher->referenceCode }}
+                                        </p>
+                                    </td>
+                                    <td>
+                                         <p style="font-weight: 800">
+                                            {{ $voucher->voucherCode }}
                                         </p>
                                     </td>
                                 </tr>
