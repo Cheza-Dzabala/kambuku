@@ -251,6 +251,8 @@ class ClassifiedsController extends Controller
        // dd(\Request::Input());
        $classified = classifieds::whereId($id)->first();
 
+        $discounted = $classified->discounted;
+
        $image_path = Config::whereName('image_dir')->first();
 
        $thumb_image_path = Config::whereName('thumbnail_image_dir')->first();
@@ -296,11 +298,34 @@ class ClassifiedsController extends Controller
             $this->process_images($request);
         }
 
+        if (isset($request['price']) && isset($request['originalPrice']))
+        {
+            if ($request['price'] >= $request['originalPrice'])
+            {
+               dd('invalid discount');
+            }else{
+                $discounted = '1';
+                $discount = $request['originalPrice'] - $request['price'];
+
+                if($discount >= 100000)
+                {
+                    $voucherPrice = $discount * 0.1;
+                }else{
+                    $voucherPrice = $discount * 0.2;
+                }
+
+                //dd('Voucher Price is '.number_format($voucherPrice, 2).'and The Discount is '.number_format($discount, 2));
+            }
+        }
+
 
        $classified->title = $request['name'];
        $classified->price = $request['price'];
+       $classified->originalPrice = $request['originalPrice'];
        $classified->description = $request['description'];
        $classified->category_id = $request['category'];
+       $classified->discounted = $discounted;
+       $classified->voucherPrice = $voucherPrice;
        $classified->sub_category_id = $request['subcategory'];
        $classified->is_active = $request['is_active'];
        $classified->keywords = $request['tags'];
