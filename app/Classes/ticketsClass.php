@@ -27,7 +27,7 @@ class ticketsClass
             $event = array_add($event, 'host', $host->name);
         }
 
-        return $events;
+        return $events->toJson();
     }
     public function generate(Request $request)
     {
