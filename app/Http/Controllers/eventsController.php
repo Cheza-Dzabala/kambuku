@@ -16,7 +16,7 @@ class eventsController extends Controller
     {
         $class = new ticketsClass();
         $events = $class->allTicket();
-
+        //dd($events);
         return view('events.index', compact('events'));
     }
 }
