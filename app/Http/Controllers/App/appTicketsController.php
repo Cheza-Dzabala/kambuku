@@ -37,7 +37,8 @@ class appTicketsController extends Controller
         $newToken = $this->generateToken();
         $ticketClass = new ticketsClass();
         $viewTickets = $ticketClass->viewTicket();
-        return response(compact('viewTickets'))
+        $tickets = json_encode($viewTickets);
+        return response(compact('tickets'))
             ->header('token', $newToken);
     }
 

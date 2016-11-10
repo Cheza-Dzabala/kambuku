@@ -100,7 +100,6 @@ class ticketsClass
             }
 
         }
-        //dd($events);
 
         return $events;
         // dd($events);
