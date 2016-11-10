@@ -61,9 +61,6 @@ class ticketsClass
             ]);
             $i++;
         }
-
-
-
         return 'successful';
     }
 
