@@ -91,7 +91,7 @@ class ticketsClass
                 $i++;
             }else{
                 $ev = events::whereId($ticket->eventId)->first();
-                $ticket = array_add($ticket, 'number_tickets', '1');
+                $ticket = array_add($ticket, 'number_tickets', 1);
                 $client = eventClients::whereId($ev->clientId)->first();
                 $ticket = array_add($ticket, 'host', $client->name);
                 $merged = array_merge($ev->toArray(), $ticket->toArray());
@@ -100,6 +100,7 @@ class ticketsClass
             }
 
         }
+        dd($events);
 
         return $events;
         // dd($events);
