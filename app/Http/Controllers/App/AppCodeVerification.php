@@ -28,7 +28,7 @@ class AppCodeVerification extends Controller
             {
                 return response(json_encode('ticket_security_keys_do_not_match'));
 
-            }else if($ticket->isUsed == 1){
+            }elseif($ticket->isUsed == 1){
                 return response(json_encode('Ticket_already_used'));
 
             }else{
