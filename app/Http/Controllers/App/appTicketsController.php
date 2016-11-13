@@ -6,6 +6,7 @@ use App\Classes\ticketsClass;
 use App\events;
 use App\eventTickets;
 use App\Http\Controllers\Controller;
+use Doctrine\DBAL\Types\JsonArrayType;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
@@ -36,7 +37,8 @@ class appTicketsController extends Controller
     {
         $newToken = $this->generateToken();
         $ticketClass = new ticketsClass();
-        $viewTickets = $ticketClass->viewTicket();
+        $tickets = $ticketClass->viewTicket();
+        $viewTickets = json_encode(array_values($tickets));
         return response(compact('viewTickets'))
             ->header('token', $newToken);
     }
