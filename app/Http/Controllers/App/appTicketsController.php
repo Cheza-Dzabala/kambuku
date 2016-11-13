@@ -60,4 +60,6 @@ class appTicketsController extends Controller
         return response(compact('tickets'))
             ->header('token', $newToken);
     }
+
+   
 }

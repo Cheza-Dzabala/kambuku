@@ -86,6 +86,11 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    Route::get('listings/recent/{dateTime}',
+        [
+           'uses' => 'App\appCategoryController@pullDateTime'
+        ]);
+
 
 
     Route::resource('authenticate', 'App\AuthenticateController', ['only' => ['index']]);

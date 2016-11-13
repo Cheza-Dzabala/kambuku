@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\App;
 
 use App\categories;
+use App\Classes\listingsClass;
 use App\classifieds;
 use App\Http\Controllers\Controller;
 use App\sub_categories;
@@ -40,6 +41,14 @@ class appCategoryController extends Controller
         $listings = classifieds::whereSub_category_id($id)->get()->toJson();
 
         return $listings;
+    }
+
+    public function pullDateTime($dateTime)
+    {
+        $class = new listingsClass();
+        $dateTimePull = $class->pullDateTime($dateTime);
+        $classifieds = json_encode(array('recent_listing' => $dateTimePull));
+        return $classifieds;
     }
 
 
