@@ -21,18 +21,21 @@ class AppCodeVerification extends Controller
         //return $ticket;
         if($ticket == null)
         {
-            return response('Ticket Doesnt Exist', 304);
+            return response(json_encode('Ticket_Doesnt_Exist'));
+
         }else{
             if($securityKey != $ticket->securityKey)
             {
-                return response('ticket_security_keys_do_not_match', 400);
+                return response(json_encode('ticket_security_keys_do_not_match'));
+
             }else if($ticket->isUsed == 1){
-                return response('ticket_already_used', 400);
+                return response(json_encode('Ticket_already_used'));
+
             }else{
                 $ticket->isUsed = 1;
                 $ticket->verifiedOn = Carbon::now();
                 $ticket->save();
-                return response('successfully_verified_ticket', 200);
+                return response(json_encode('Successfully_verified_ticket'));
             }
         }
     }
