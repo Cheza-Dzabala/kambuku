@@ -12,11 +12,11 @@ use App\Http\Requests;
 class AppCodeVerification extends Controller
 {
     //
-    public function verify(Request $request)
+    public function verify($vcode, $skey)
     {
-
-        $verificationCode = $request->verificationCode;
-        $securityKey = $request->securityKey;
+       // return $vcode.$skey;
+        $verificationCode = $vcode;
+        $securityKey = $skey;
         $ticket = eventTickets::whereVerificationcode($verificationCode)->first();
         //return $ticket;
         if($ticket == null)
