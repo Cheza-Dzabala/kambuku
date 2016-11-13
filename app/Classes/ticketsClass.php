@@ -31,13 +31,13 @@ class ticketsClass
     }
     public function generate(Request $request)
     {
+        $secret_key = 'Blowfish';
+        $securityKey = $request->securityKey;
         //dd($request);
         $event =  events::whereId($request->eventId)->first();
         // dd($event);
         $host = eventClients::whereId($event->clientId)->first();
         // dd($host);
-        $securityKey = encrypt($request->securityKey);
-       // dd($securityKey);
 
         if ($request-> numberTickets > 1)
         {
