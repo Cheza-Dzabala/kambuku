@@ -91,6 +91,10 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
            'uses' => 'App\appCategoryController@pullDateTime'
         ]);
 
+    Route::post('codes/verify/',
+        [
+           'uses' => 'App\AppCodeVerification@verify'
+        ]);
 
 
     Route::resource('authenticate', 'App\AuthenticateController', ['only' => ['index']]);
