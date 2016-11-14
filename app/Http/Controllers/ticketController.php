@@ -42,26 +42,33 @@ class ticketController extends Controller
     public function viewCodes($id)
     {
         $sample = eventTickets::whereId($id)->first();
-        $event = events::whereId($sample->eventId)->first();
-        $i = 0;
-        $tickets = [];
-        if ($sample->bulkCode == null)
-        {
-            $sample = array_add($sample, 'eventName', $event->eventName);
-            $tickets = array_add($tickets, $i, $sample);
-        }else{
-            $samples = eventTickets::whereBulkcode($sample->bulkCode)->get();
 
-            foreach ($samples as $sample)
+        if($sample->isActive == 0)
+        {
+            return redirect()->route('tickets.view');
+        }else{
+            $event = events::whereId($sample->eventId)->first();
+            $i = 0;
+            $tickets = [];
+            if ($sample->bulkCode == null)
             {
                 $sample = array_add($sample, 'eventName', $event->eventName);
                 $tickets = array_add($tickets, $i, $sample);
-                $i++;
+            }else{
+                $samples = eventTickets::whereBulkcode($sample->bulkCode)->get();
+
+                foreach ($samples as $sample)
+                {
+                    $sample = array_add($sample, 'eventName', $event->eventName);
+                    $tickets = array_add($tickets, $i, $sample);
+                    $i++;
+                }
             }
+
+
+            return view('events.codes', compact('tickets', 'event'));
         }
 
-
-        return view('events.codes', compact('tickets', 'event'));
     }
 
     /**
