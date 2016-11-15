@@ -34,12 +34,12 @@
                                                 <img src="{{ asset($event['artwork']) }}" alt="" width="50px" height="50px"/>
                                                 <h2>{{ number_format($event['price']  , 2) }}</h2>
                                                 <p>{{ $event['eventName'] }}</p>
+                                                @if($event['bulkCode'] != null)
+                                                    <?php $code = $event['bulkCode'] ?>
+                                                @else
+                                                    <?php $code = $event['referenceCode'] ?>
+                                                @endif
                                                 @if($event['isActive'] == '1')
-                                                    @if($event['bulkCode'] != null)
-                                                        <?php $code = $event['bulkCode'] ?>
-                                                    @else
-                                                        <?php $code = $event['referenceCode'] ?>
-                                                    @endif
                                                     <a href="{{ route('codes.view', $event['id']) }}" class="btn btn-default add-to-cart">
                                                         View Ticket(s)
                                                     </a>
@@ -52,6 +52,7 @@
                                         <div class="choose">
                                             <b>Host:</b> {{ $event['host'] }} <br/>
                                             <b>Venue:</b> {{ $event['venue'] }} <br/>
+                                            <b>Payment Code:</b> {{ $code }} <br/>
                                             <b>Date:</b> {{ $event['eventDate'] }} <br/>
                                             <b>Time:</b> {{ $event['time'] }} <br/>
                                             <span class="help-block">
