@@ -76,7 +76,7 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
 
     Route::get('tickets',
         [
-            'uses' => 'App\appTicketsController@allTickets'
+            'uses' => 'App  \appTicketsController@allTickets'
         ]
     );
 
@@ -85,6 +85,11 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
             'uses' => 'App\appTicketsController@createTicket'
         ]
     );
+
+    Route::get('tickets/bulk/{bulkCode}',
+        [
+            'uses' => 'App\appTicketsController@bulkTickets'
+        ]);
 
     Route::get('listings/recent/{dateTime}',
         [
@@ -165,7 +170,7 @@ Route::group(['middleware' => ['web']], function () {
         ]
     );
 
-    Route::get('view/tickets/qrCodes/{id}',
+    Route::get('tickets/view/qrCodes/{id}',
         [
             'as' => 'codes.view',
             'uses' => 'ticketController@viewCodes'

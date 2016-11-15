@@ -61,5 +61,12 @@ class appTicketsController extends Controller
             ->header('token', $newToken);
     }
 
+    public function bulkTickets($bulkCode)
+    {
+        $newToken = $this->generateToken();
+        $tickets = eventTickets::whereBulkcode($bulkCode)->get();
+        return response(compact('tickets'))
+                ->header('token', $newToken);
+    }
 
 }
