@@ -67,6 +67,7 @@ class AuthenticateController extends Controller
                 'email' => $input['email'],
                 'date_of_birth' => $input['dob'],
                 'gender' => $input['gender'],
+                'mobile' => $input['mobile'],
                 'password' => bcrypt($input['password']),
                 'is_active' => '1',
                 'image_path' => $default_image,
