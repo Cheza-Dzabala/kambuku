@@ -15,6 +15,8 @@ class AppCodeVerification extends Controller
     public function verify($vcode, $skey)
     {
        // return $vcode.$skey;
+
+
         $verificationCode = $vcode;
         $securityKey = $skey;
         $ticket = eventTickets::whereVerificationcode($verificationCode)->first();

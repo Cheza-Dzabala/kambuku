@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Classes\voucherClass;
 use App\classifieds;
 use App\Config;
 use App\User;
@@ -19,27 +20,8 @@ class voucherController extends Controller
     //
     public function processVoucher($id)
     {
-        $userId = Auth::user()['id'];
-        $listing = classifieds::whereId($id)->first();
-        $lister = User::whereId($listing->user_id)->first();
-        $string = "";
-
-        $chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-
-        for($i=0;$i<5;$i++)
-        {
-            $string.=substr($chars,rand(0,strlen($chars)),1);
-        }
-
-        $referenceCode = $userId.$string.$lister->id ;
-
-        vouchers::create([
-            'userId' => $userId,
-            'listingId' => $listing->id,
-            'voucherCost' => $listing->voucherPrice,
-            'referenceCode' => $referenceCode
-        ]);
-
+        $voucherClass = new voucherClass();
+        $voucher = $voucherClass->purchaseVoucher($id);
         Session::flash('savedVoucher', 'Successfully Created Your Voucher');
         return redirect()->route('classifieds.show', $id);
     }

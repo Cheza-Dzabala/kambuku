@@ -23,21 +23,21 @@ class AuthenticateController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('jwt.auth', ['except' => ['authenticate']]);
+        $this->middleware('jwt.auth', ['except' => ['authenticate', 'signUp']]);
         $this->middleware('CORS');
-        $this->middleware('appAuthenticate', ['except' => ['authenticate']]);
+        $this->middleware('appAuthenticate', ['except' => ['authenticate', 'signUp']]);
     }
 
     public function authenticate(Request $request)
     {
-        $email =  Request::header('email');
-        $password =  Request::header('password');
+        $email = Request::header('email');
+        $password = Request::header('password');
         $credentials = (['email' => $email, 'password' => $password]);
 
         //dd($credentials);
         try {
             // verify the credentials and create a token for the user
-            if (! $token = JWTAuth::attempt($credentials)) {
+            if (!$token = JWTAuth::attempt($credentials)) {
                 return response()->json(['error' => 'invalid_credentials'], 401);
             }
         } catch (JWTException $e) {
@@ -47,6 +47,33 @@ class AuthenticateController extends Controller
 
         // if no errors are encountered we can return a JWT
         return response('successfully logged in', 200)->header('token', $token);
+    }
+
+    public function signUp(Request $request)
+    {
+        $input = Request::input();
+        if ($input['gender'] == 'm') {
+            $default_image = 'images/uploads/avatars/defaults/male.png';
+        } else {
+            $default_image = 'images/uploads/avatars/defaults/female.png';
+        }
+
+        $currentUsers = User::whereEmail($input['email'])->first();
+        if ($currentUsers != null) {
+            return response(json_encode('user_already_exists'));
+        } else {
+            User::create([
+                'name' => $input['name'],
+                'email' => $input['email'],
+                'date_of_birth' => $input['dob'],
+                'gender' => $input['gender'],
+                'password' => bcrypt($input['password']),
+                'is_active' => '1',
+                'image_path' => $default_image,
+            ]);
+            return response(json_encode('successfully_created_account'));
+        }
+
     }
 
     public function index()

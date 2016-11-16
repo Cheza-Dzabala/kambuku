@@ -96,6 +96,21 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
            'uses' => 'App\AppCodeVerification@verify'
         ]);
 
+    Route::get('tickets/bulkcodes/{bulkCode}',
+        [
+            'uses' => 'App\appTicketsController@getBulk',
+        ]);
+
+    Route::get('listings/buyvoucher/{id}',
+        [
+            'uses' => 'App\appVouchers@buyVoucher'
+        ]);
+
+    Route::post('signup',
+        [
+            'uses' => 'App\AuthenticateController@signUp'
+        ]);
+
 
     Route::resource('authenticate', 'App\AuthenticateController', ['only' => ['index']]);
     Route::post('authenticate', 'App\AuthenticateController@authenticate');
