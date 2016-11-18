@@ -32,7 +32,7 @@ Route::group(['middleware' => ['web']], function () {
 
 Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
     //Events APP
-    Route::get('eventsApp/allEvents', 'Events\EventsAppTicketController@index');
+    Route::get('eventsApp/allEvents', 'Events\eventsAppTicketController@index');
     //EVENTS APP
     Route::get('home',
         [
