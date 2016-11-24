@@ -22,8 +22,11 @@ class adminTicketController extends Controller
         $clients = eventClients::get();
         foreach ($clients as $client)
         {
+            $userDetails = User::whereId($client->user_id)->first();
             $count = events::whereClientid($client->id)->count();
             $client = array_add($client, 'eventCount', $count);
+            $client = array_add($client, 'name', $userDetails->name);
+            $client = array_add($client, 'contactNumber', $userDetails->mobile);
         }
 
         return view('admin.tickets.index', compact('clients'));
@@ -31,17 +34,15 @@ class adminTicketController extends Controller
 
     public function clients()
     {
-        return view('admin.tickets.clients');
+        $users = User::get();
+        return view('admin.tickets.clients', compact('users'));
     }
 
     public function clientsSave(Request $request)
     {
+        //dd($request);
         eventClients::create([
-            'name' => $request->name,
-            'contactPerson' => $request->contactPerson,
-            'contactNumber' => $request->contactNumber,
-            'email' => $request->email,
-            'postalAddress' => $request->postalAddress,
+            'user_id' => $request->user_id,
             'bankName' => $request->bankName,
             'bankBranch' => $request->bankBranch,
             'accountName' => $request->accountName,

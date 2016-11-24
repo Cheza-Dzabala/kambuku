@@ -35,7 +35,6 @@
                                 <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Client Contact Person</th>
                                     <th>Client Phone Number</th>
                                     <th>Event Count</th>
                                     <th>Action</th>
@@ -45,7 +44,6 @@
                                     @foreach($clients as $client)
                                         <tr>
                                             <td>{{ $client->name }}</td>
-                                            <td>{{ $client->contactPerson }}</td>
                                             <td>{{ $client->contactNumber }}</td>
                                             <td>{{ $client->eventCount }}</td>
                                             <td>

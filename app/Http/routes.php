@@ -31,9 +31,13 @@ Route::group(['middleware' => ['web']], function () {
 
 
 Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
-    //Events APP
-    Route::get('eventsApp/allEvents', 'Events\eventsAppTicketController@index');
     //EVENTS APP
+
+    Route::post('eventsApp/login', 'Events\eventsAppAuthenticateController@login');
+    Route::get('eventsApp/getUserData', 'Events\eventsAppTicketController@getUserData');
+    Route::get('eventsApp/allEvents', 'Events\eventsAppTicketController@index');
+    Route::get('eventsApp/allEvents/count', 'Events\eventsAppTicketController@countTickets');
+
     Route::get('home',
         [
             'uses' => 'App\AppdashBoardController@index'

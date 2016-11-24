@@ -1,6 +1,8 @@
 @extends('adminMaster')
 @section('css')
     <link href="{{ asset('public/admin/assets/datatables/jquery.dataTables.min.css" rel="stylesheet') }}" type="text/css" />
+    <link href="{{ asset('public/admin/assets/plugins/select2/dist/css/select2.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('public/admin/assets/plugins/select2/dist/css/select2-bootstrap.css') }}" rel="stylesheet" type="text/css">
 @endsection
 
 @section('content')
@@ -33,24 +35,15 @@
                                 {{ csrf_field() }}
                                 <div class="form-group">
 
-                                    <input type="text" class="form-control" name="name" placeholder="Name" required>
-                                </div>
+                                        <select class="select2 form-control" data-placeholder="Choose a User..." name="user_id">
+                                            <option>Select User...</option>
+                                            @foreach($users as $user)
+                                                <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            @endforeach
+                                        </select>
 
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="contactPerson" placeholder="Contact Person" required>
                                 </div>
-
-                                <div class="form-group">
-                                    <input type="text" class="form-control" name="contactNumber" placeholder="Contact Number" required>
-                                </div>
-
-                                <div class="form-group">
-                                    <input type="email" class="form-control" name="email" placeholder="Email" required>
-                                </div>
-
-                                <div class="form-group">
-                                   <textarea name="postalAddress" class="form-control" placeholder="Postal Address" rows="8"></textarea>
-                                </div>
+                                <hr>
 
                                 <div class="form-group">
                                     <input type="text" class="form-control" name="bankName" placeholder="Bank Name" required>
@@ -103,7 +96,7 @@
 @section('scripts')
     <script src="{{ URL::asset('public/admin/assets/datatables/jquery.dataTables.min.js') }}"></script>
     <script src="{{ URL::asset('public/admin/assets/datatables/dataTables.bootstrap.js') }}"></script>
-
+    <script src="{{ URL::asset('public/admin/assets/plugins/select2/dist/js/select2.min.js') }}" type="text/javascript"></script>
 
     <script type="text/javascript">
         $(document).ready(function() {

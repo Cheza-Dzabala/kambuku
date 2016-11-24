@@ -12,6 +12,6 @@ class eventClients extends Model
     protected $fillable = [
         'name', 'contactPerson', 'contactNumber', 'email', 'postalAddress', 'bankName',
         'bankBranch', 'accountName', 'accountNumber', 'airtelMoneyNumber', 'tnmMpambaMoneyNumber',
-        'preferredPayments',
+        'preferredPayments', 'user_id'
     ];
 }

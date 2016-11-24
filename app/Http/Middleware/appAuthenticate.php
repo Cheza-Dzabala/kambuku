@@ -41,8 +41,6 @@ class appAuthenticate
 
         }
 
-        $newToken = JWTAuth::parseToken()->refresh();
-
         return $next($request);
     }
 }
