@@ -30,7 +30,8 @@ class appVouchers extends Controller
     private function generateToken()
     {
         $newToken = JWTAuth::getToken();
-        return $newToken;
+        $token = JWTAuth::refresh($newToken);
+        return $token;
     }
 
 }

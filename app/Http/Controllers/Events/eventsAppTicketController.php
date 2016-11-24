@@ -51,6 +51,14 @@ class eventsAppTicketController extends Controller
          return response($events->toJson())->header('token', $token);
     }
 
+
+    public function syncEvents($id)
+    {
+        $token = $this->generateToken();
+        $tickets = eventTickets::whereEventid($id)->get()->toJson();
+        return response($tickets)->header('token', $token);
+    }
+
     private function generateToken()
     {
         $newToken = JWTAuth::getToken();
