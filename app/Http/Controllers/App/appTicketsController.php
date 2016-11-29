@@ -57,9 +57,7 @@ class appTicketsController extends Controller
     {
         $class = new ticketsClass();
         $tickets = $class->allTicket();
-        $newToken = $this->generateToken();
-        return response(compact('tickets'))
-            ->header('token', $newToken);
+         return response(compact('tickets'));
     }
 
 
