@@ -27,6 +27,16 @@ class appVouchers extends Controller
             ->header('token', $newToken);
     }
 
+    public function getVouchers()
+    {
+        $newToken = $this->generateToken();
+        $voucherClass = new voucherClass();
+        $vouchers = $voucherClass->getVouchers();
+        return response(compact('vouchers'))
+            ->header('token', $newToken);
+
+    }
+
     private function generateToken()
     {
         $newToken = JWTAuth::getToken();

@@ -42,4 +42,11 @@ class voucherClass
         return $newVoucher;
     }
 
+    public function getVouchers()
+    {
+        $userID= Auth::user()['id'];
+        $vouchers = vouchers::whereUserid($userID)->get();
+        return $vouchers;
+    }
+
 }

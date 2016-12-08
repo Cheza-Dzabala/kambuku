@@ -113,6 +113,12 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
             'uses' => 'App\appVouchers@buyVoucher'
         ]);
 
+
+    Route::get('vouchers/all',
+        [
+           'uses' => 'App\appVouchers@getVouchers'
+        ]);
+
     Route::post('signup',
         [
             'uses' => 'App\AuthenticateController@signUp'
