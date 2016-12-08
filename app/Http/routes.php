@@ -38,6 +38,7 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
     Route::get('eventsApp/allEvents', 'Events\eventsAppTicketController@index');
     Route::get('eventsApp/allEvents/count', 'Events\eventsAppTicketController@countTickets');
     Route::get('eventsApp/syncEvents/{id}', 'Events\eventsAppTicketController@syncEvents');
+    Route::get('codes/verify/{vCode}/{sKey}', 'Events\eventsAppVerification@verify');
 
     Route::get('home',
         [
