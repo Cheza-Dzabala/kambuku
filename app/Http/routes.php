@@ -48,7 +48,7 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
 
     Route::get('mainImage',
         [
-           'uses' => 'App\AppImageController@index'
+           'uses' => 'App\appImageController@index'
         ]);
 
     Route::get('listing/{id}',
