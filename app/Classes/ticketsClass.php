@@ -69,6 +69,7 @@ class ticketsClass
         $tickets = eventTickets::whereUserid(Auth::user()['id'])->get();
         $bulk = '';
         $events = [];
+        $subArray = [];
         $i = 0;
         foreach ($tickets as $ticket)
         {
@@ -77,9 +78,14 @@ class ticketsClass
                 if ($bulk != $ticket->bulkCode)
                 {
                     $num = eventTickets::whereBulkcode($ticket->bulkCode)->count();
+                    $verificationCodes = eventTickets::select('securityKey', 'verificationCode')
+                        ->whereBulkcode($ticket->bulkCode)
+                        ->get();
+
                     $ev = events::whereId($ticket->eventId)->first();
                     $client = eventClients::whereId($ev->clientId)->first();
                     $ticket = array_add($ticket, 'number_tickets', $num);
+                    $ticket = array_add($ticket, 'allTickets', $verificationCodes);
                     $ticket = array_add($ticket, 'host', $client->name);
                     $merged = array_merge($ev->toArray(), $ticket->toArray());
                     $events = array_add($events, $i, $merged);

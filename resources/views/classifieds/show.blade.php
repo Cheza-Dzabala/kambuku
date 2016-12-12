@@ -27,6 +27,7 @@
 
                 <div class="col-sm-5">
                     <div class="view-product">
+
                         <img src="{{ asset($image_path->value.$classified_details->image_path) }}" alt="" />
 
                     </div>

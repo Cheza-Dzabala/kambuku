@@ -46,6 +46,11 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    Route::get('mainImage',
+        [
+           'uses' => 'App\AppImageController@index'
+        ]);
+
     Route::get('listing/{id}',
         [
             'uses' => 'App\AppdashBoardController@userDetails'
@@ -365,6 +370,28 @@ Route::group(['middleware' => ['web']], function () {
                 'uses' => 'Admin\AdminController@index'
             ]
         );
+
+        Route::get('/app',
+            [
+                'as' => 'admin.app.index',
+                'uses' => 'Admin\mobileAppController@index'
+            ]);
+
+        Route::get('/app/image',
+            [
+                'as' => 'admin.app.image',
+                'uses' => 'Admin\mobileAppController@imageIndex'
+            ]);
+
+        Route::post('app/image',
+            [
+                'as' => 'admin.app.image.post',
+                'uses' => 'Admin\mobileAppController@saveImage'
+            ]);
+
+
+
+
 
         Route::get('/vouchers',
             [
