@@ -46,6 +46,13 @@ class voucherClass
     {
         $userID= Auth::user()['id'];
         $vouchers = vouchers::whereUserid($userID)->get();
+
+        foreach ($vouchers as $voucher)
+        {
+            $listing = classifieds::whereId($voucher->listingId)->first();
+            $voucher = array_add($voucher, 'listing_name', $listing->title);
+            $voucher = array_add($voucher, 'listing_price', $listing->price);
+        }
         return $vouchers;
     }
 
