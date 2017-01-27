@@ -25,10 +25,13 @@ class adminTicketController extends Controller
             foreach ($clients as $client)
             {
                 $userDetails = User::whereId($client->user_id)->first();
-                $count = events::whereClientid($client->id)->count();
-                $client = array_add($client, 'eventCount', $count);
-                //$client = array_add($client, 'name', $userDetails->name);
-                $client = array_add($client, 'contactNumber', $userDetails->mobile);
+                if ($userDetails != null)
+                {
+                    $count = events::whereClientid($client->id)->count();
+                    $client = array_add($client, 'eventCount', $count);
+                    $client = array_add($client, 'name', $userDetails->name);
+                    $client = array_add($client, 'contactNumber', $userDetails->mobile);
+                }
             }
         }
 
