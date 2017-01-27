@@ -20,13 +20,16 @@ class adminTicketController extends Controller
     public function index()
     {
         $clients = eventClients::get();
-        foreach ($clients as $client)
+        if($clients != null)
         {
-            $userDetails = User::whereId($client->user_id)->first();
-            $count = events::whereClientid($client->id)->count();
-            $client = array_add($client, 'eventCount', $count);
-            $client = array_add($client, 'name', $userDetails->name);
-            $client = array_add($client, 'contactNumber', $userDetails->mobile);
+            foreach ($clients as $client)
+            {
+                $userDetails = User::whereId($client->user_id)->first();
+                $count = events::whereClientid($client->id)->count();
+                $client = array_add($client, 'eventCount', $count);
+                $client = array_add($client, 'name', $userDetails->name);
+                $client = array_add($client, 'contactNumber', $userDetails->mobile);
+            }
         }
 
         return view('admin.tickets.index', compact('clients'));
