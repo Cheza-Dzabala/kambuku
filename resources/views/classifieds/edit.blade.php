@@ -43,7 +43,7 @@
 
                 <div class="form-group{{ $errors->has('price') ? ' has-error' : '' }}">
                     <div class=" col-md-6">
-                        <input type="number" value="{{ $classified->price }}" name="price" min="0" max="10000000" class="form-control" placeholder="Price">
+                        <input type="number" value="{{ $classified->price }}" name="price" min="0" class="form-control" placeholder="Price">
                         @if ($errors->has('price'))
                             <span class="help-block">
                                          <strong>{{ $errors->first('price') }}</strong>
@@ -56,7 +56,7 @@
 
                 <div class="form-group{{ $errors->has('originalPrice') ? ' has-error' : '' }}" style="padding-top: 5%">
                     <div class=" col-md-6">
-                        <input type="number" name="originalPrice" min="0" max="500000000" value="{{ $classified->originalPrice }}"  class="form-control" placeholder="Original Price" required>
+                        <input type="number" name="originalPrice" min="0"  value="{{ $classified->originalPrice }}"  class="form-control" placeholder="Original Price" required>
                         @if ($errors->has('originalPrice'))
                             <span class="help-block">
                                              <strong>{{ $errors->first('originalPrice') }}</strong>
