@@ -22,6 +22,26 @@ class appCategoryController extends Controller
         return strip_tags($categories);
     }
 
+
+    public function featured()
+    {
+        $listings = classifieds::orderBy('id', 'DESC')
+            ->whereIs_active('1')
+            ->whereIsFeatured('1')
+            ->take(20)->get();
+
+        $config = Config::whereName('image_dir')->first();
+
+        foreach ($listings as $listing)
+        {
+            $listing->image_path = $config->value.$listing->image_path;
+        }
+
+
+        return $listings->toJson();
+
+    }
+
     public function subCategories($id)
     {
         $subcategories = sub_categories::whereCategory_id($id)->get(['id', 'name'])->toJson();

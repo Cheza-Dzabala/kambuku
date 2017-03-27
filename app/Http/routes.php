@@ -46,6 +46,12 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    Route::get('featured',
+        [
+            'uses' => 'App\AppdashBoardController@featured'
+        ]
+    );
+
     Route::get('mainImage',
         [
            'uses' => 'App\appImageController@index'
