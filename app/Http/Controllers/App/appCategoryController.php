@@ -17,7 +17,7 @@ class appCategoryController extends Controller
 
     public function index()
     {
-        $categories = categories::get();
+        $categories = categories::get(['id', 'name'])->toJson();
 
         return strip_tags($categories);
     }
