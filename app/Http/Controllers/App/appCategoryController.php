@@ -27,9 +27,15 @@ class appCategoryController extends Controller
 
     public function subCategories($id)
     {
-        $subcategories = sub_categories::whereCategory_id($id)->get(['id', 'name'])->toJson();
+        $subcategories = sub_categories::whereCategory_id($id)->get(['id', 'name']);
 
-        return strip_tags($subcategories);
+        foreach ($subcategories as $subcategory)
+        {
+            $classified_count = classifieds::whereSub_category_id($subcategory->id)->count();
+            $subcategory = array_add($subcategory, 'sub_category_count', $classified_count);
+        }
+
+        return strip_tags($subcategories->toJson());
     }
 
     public function categoryListings($id)
