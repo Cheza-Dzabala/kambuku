@@ -17,9 +17,9 @@ class appCategoryController extends Controller
 
     public function index()
     {
-        $categories = categories::get()->toJson();
+        $categories = categories::get();
 
-        return $categories;
+        return strip_tags($categories);
     }
 
     public function subCategories($id)
