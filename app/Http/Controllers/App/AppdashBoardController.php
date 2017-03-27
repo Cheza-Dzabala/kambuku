@@ -33,7 +33,7 @@ class AppdashBoardController extends Controller
     {
         $listings = classifieds::orderBy('id', 'DESC')
             ->whereIs_active('1')
-            ->whereIsFeatured('1')
+            ->whereIs_featured('1')
             ->take(20)->get();
 
         $config = Config::whereName('image_dir')->first();
