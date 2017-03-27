@@ -19,7 +19,7 @@ class appCategoryController extends Controller
     {
         $categories = categories::get()->toJson();
 
-        return strip_tags($categories);
+        return $categories;
     }
 
     public function subCategories($id)
