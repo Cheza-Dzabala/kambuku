@@ -48,7 +48,7 @@ class appCategoryController extends Controller
 
     public function subcategoryListings($id)
     {
-        $listings = classifieds::whereSub_category_id($id)->get()->toJson();
+        $listings = classifieds::whereSub_category_id($id)->get();
         $config = Config::whereName('image_dir')->first();
 
         foreach ($listings as $listing)
