@@ -56,7 +56,7 @@ class appCategoryController extends Controller
             $listing->image_path = $config->value.$listing->image_path;
         }
 
-        return $listings;
+        return $listings->toJson();
     }
 
     public function pullDateTime($dateTime)
