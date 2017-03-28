@@ -5,6 +5,7 @@ namespace App\Http\Controllers\App;
 use App\categories;
 use App\Classes\listingsClass;
 use App\classifieds;
+use App\Config;
 use App\Http\Controllers\Controller;
 use App\sub_categories;
 use Illuminate\Http\Request;
@@ -48,6 +49,12 @@ class appCategoryController extends Controller
     public function subcategoryListings($id)
     {
         $listings = classifieds::whereSub_category_id($id)->get()->toJson();
+        $config = Config::whereName('image_dir')->first();
+
+        foreach ($listings as $listing)
+        {
+            $listing->image_path = $config->value.$listing->image_path;
+        }
 
         return $listings;
     }
