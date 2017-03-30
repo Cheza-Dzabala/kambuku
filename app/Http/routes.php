@@ -87,6 +87,12 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    ROute::get('search/{searchTerm}',
+        [
+            'uses' => 'App\appSearchController@search'
+        ]
+    );
+
     Route::get('tickets/view',
         [
             'uses' => 'App\appTicketsController@viewTickets'
