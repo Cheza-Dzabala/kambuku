@@ -56,5 +56,22 @@ class AppdashBoardController extends Controller
     }
 
 
+    public function more($currentPage)
+    {
+        $skiplength = $currentPage * 20;
+
+        $listings = classifieds::orderBy('id', 'DESC')->whereIs_active('1')->skip($skiplength)->take(20)->get();
+
+        $config = Config::whereName('image_dir')->first();
+
+        foreach ($listings as $listing)
+        {
+            $listing->image_path = $config->value.$listing->image_path;
+        }
+
+
+        return $listings->toJson();
+    }
+
 
 }
