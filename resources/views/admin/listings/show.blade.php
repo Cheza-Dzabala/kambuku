@@ -82,6 +82,7 @@
                                                 Actions: &nbsp;
                                                 <input type="checkbox" name="is_active" @if($listing->is_active == 1) checked @endif> Active
                                                 <input type="checkbox" name="is_featured" @if($listing->is_featured == 1) checked @endif> Featured
+                                                <input type="checkbox" name="is_deal" @if($listing->is_deal == 1) checked @endif> Deal
                                             </div>
                                         </div>
 

@@ -52,6 +52,12 @@ Route::group(['middleware' => ['web', 'CORS'], 'prefix' => 'app'], function(){
         ]
     );
 
+    Route::get('deals',
+        [
+            'uses' => 'App\AppdashBoardController@deals'
+        ]
+    );
+
     Route::get('featured/more/{currentPage}',
         [
             'uses' => 'App\AppdashBoardController@moreFeatured'

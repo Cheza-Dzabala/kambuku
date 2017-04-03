@@ -84,12 +84,20 @@ class userListingsController extends Controller
             $featured = 0;
         }
 
+        if (isset($request->is_deal))
+        {
+            $deal = 1;
+        }else{
+            $deal = 0;
+        }
+
         $listing->title = $request->title;
         $listing->description = $request->description;
         $listing->category_id = $request->category_id;
         $listing->sub_category_id = $request->sub_category_id;
         $listing->is_active = $active;
         $listing->is_featured = $featured;
+        $listing->is_deal = $deal;
 
         $listing->save();
 

@@ -94,5 +94,23 @@ class AppdashBoardController extends Controller
         return $listings->toJson();
     }
 
+    public function deals()
+    {
+        $listings = classifieds::orderBy('id', 'DESC')
+            ->whereIs_deal('1')
+            ->whereIs_active('1')->take(20)->get();
+
+        $config = Config::whereName('image_dir')->first();
+
+        foreach ($listings as $listing)
+        {
+            $listing->image_path = $config->value.$listing->image_path;
+        }
+
+
+        return $listings->toJson();
+
+    }
+
 
 }
